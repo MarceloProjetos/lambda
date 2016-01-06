@@ -17,6 +17,6 @@
     "nodeunit": "^0.9.1"
   },
   "dependencies": {
-    "mailparser": "^0.5.3",
+    "mailparser": "^0.5.3"
   }
 }

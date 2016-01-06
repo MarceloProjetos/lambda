@@ -66,7 +66,7 @@ exports.handler = function(event, context) {
                         console.log('\nProcessing attachment:'+ attachment.fileName);
                         var data = {
                             Bucket: destination,
-                            Key: attachment.fileName,
+                            Key: sesNotification.mail.messageId + '/' + attachment.fileName,
                             Body: attachment.content
                         };
 

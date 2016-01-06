@@ -2,9 +2,10 @@
   "name": "s3-fetch-mail-attachments",
   "version": "1.0.0",
   "description": "fetch attachments from mail files stored in s3 bucket and save in another bucket for async process",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
-    "test": "nodeunit test/"
+    "test": "nodeunit test/",
+    "up": "node-lambda run"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,236 @@
+{
+  "chave": "NFe35160161217188000119550010000114821050500001",
+  
+  "nfeProc": {
+    "NFe": {
+      "infNFe": {
+        "cobr": {
+          "dup": [
+            {
+              "dVenc": "2016-01-26",
+              "nDup": "11482/1",
+              "vDup": "211.07"
+            },
+            {
+              "dVenc": "2016-02-02",
+              "nDup": "11482/2",
+              "vDup": "211.07"
+            }
+          ],
+          "fat": {
+            "nFat": "11482",
+            "vOrig": "422.14"
+          }
+        },
+        "dest": {
+          "CNPJ": "43799295000110",
+          "enderDest": {
+            "CEP": "03444000",
+            "cMun": "3550308",
+            "cPais": "1058",
+            "fone": "1120952855",
+            "nro": "1410",
+            "UF": "SP",
+            "xBairro": "VL N MANCHESTER",
+            "xCpl": "R GANGES 5",
+            "xLgr": "R TAMAINDE",
+            "xMun": "Sao Paulo",
+            "xPais": "BRASIL"
+          },
+          "IE": "109095380110",
+          "indIEDest": "1",
+          "xNome": "ALTAMIRA INDUSTRIA  METALURGICA LTDA"
+        },
+        "det": {
+          "imposto": {
+            "COFINS": {
+              "COFINSNT": {
+                "CST": "08"
+              }
+            },
+            "ICMS": {
+              "ICMS00": {
+                "CST": "00",
+                "modBC": "3",
+                "orig": "0",
+                "pICMS": "12.00",
+                "vBC": "367.08",
+                "vICMS": "44.05"
+              }
+            },
+            "IPI": {
+              "cEnq": "999",
+              "IPITrib": {
+                "CST": "50",
+                "pIPI": "15.00",
+                "vBC": "367.08",
+                "vIPI": "55.06"
+              }
+            },
+            "PIS": {
+              "PISNT": {
+                "CST": "08"
+              }
+            },
+            "vTotTrib": "144.66"
+          },
+          "nItem": "1",
+          "prod": {
+            "cEAN": "null",
+            "cEANTrib": "null",
+            "CFOP": "5101",
+            "cProd": "0020",
+            "indTot": "1",
+            "NCM": "73144100",
+            "qCom": "15.8910",
+            "qTrib": "15.8910",
+            "uCom": "M2",
+            "uTrib": "M2",
+            "vProd": "367.08",
+            "vUnCom": "23.100",
+            "vUnTrib": "23.100",
+            "xProd": "ON1F12"
+          }
+        },
+        "emit": {
+          "CNPJ": "61217188000119",
+          "CRT": "3",
+          "enderEmit": {
+            "CEP": "03680080",
+            "cMun": "3550308",
+            "cPais": "1058",
+            "fone": "1127249411",
+            "nro": "38",
+            "UF": "SP",
+            "xBairro": "BURGO PAULISTA",
+            "xLgr": "RUA ALDEIA DO PRATA",
+            "xMun": "Sao Paulo",
+            "xPais": "BRASIL"
+          },
+          "IE": "105665535117",
+          "xNome": "TELAS METALICAS TELMETAL LTDA"
+        },
+        "Id": "NFe35160161217188000119550010000114821050500001",
+        "ide": {
+          "cDV": "1",
+          "cMunFG": "3550308",
+          "cNF": "05050000",
+          "cUF": "35",
+          "dhEmi": "2016-01-05T15:19:00-02:00",
+          "dhSaiEnt": "2016-01-05T15:19:00-02:00",
+          "finNFe": "1",
+          "idDest": "1",
+          "indFinal": "0",
+          "indPag": "1",
+          "indPres": "9",
+          "mod": "55",
+          "natOp": "VENDAS PARA DENTRO DO ESTADO",
+          "nNF": "11482",
+          "procEmi": "3",
+          "serie": "1",
+          "tpAmb": "1",
+          "tpEmis": "1",
+          "tpImp": "1",
+          "tpNF": "1",
+          "verProc": "3.10.74"
+        },
+        "infAdic": {
+          "infAdFisco": "ARTIGO 54 A 1,5,6,7,8 DO RICMS SP - DECRETO 45490/2000;PEDIDO 73904 BOMAX PEDIDO DE COMPRA 01 14388;.Reducao da Aliquota do ICMS de 18% para 12% segundo a Resolucao SF nro. 04/1998;Trib aprox R$:78,59 Federal e 66,07 Estadual  Fonte: IBPT/FECOMERCIO SP 5oi7eW",
+          "infCpl": "PEDIDO   36246"
+        },
+        "total": {
+          "ICMSTot": {
+            "vBC": "367.08",
+            "vBCST": "0.00",
+            "vCOFINS": "0.00",
+            "vDesc": "0.00",
+            "vFCPUFDest": "0.00",
+            "vFrete": "0.00",
+            "vICMS": "44.05",
+            "vICMSDeson": "0.00",
+            "vICMSUFDest": "0.00",
+            "vICMSUFRemet": "0.00",
+            "vII": "0.00",
+            "vIPI": "55.06",
+            "vNF": "422.14",
+            "vOutro": "0.00",
+            "vPIS": "0.00",
+            "vProd": "367.08",
+            "vSeg": "0.00",
+            "vST": "0.00",
+            "vTotTrib": "144.66"
+          }
+        },
+        "transp": {
+          "modFrete": "1",
+          "transporta": {
+            "CNPJ": "61217188000119",
+            "IE": "105665535117",
+            "UF": "SP",
+            "xEnder": "RUA ALDEIA DO PRATA, 38",
+            "xMun": "Sao Paulo",
+            "xNome": "TELAS METALICAS TELMETAL LTDA"
+          },
+          "vol": {
+            "esp": "PECAS",
+            "marca": "TMT",
+            "pesoB": "58.000",
+            "pesoL": "58.000",
+            "qVol": "15"
+          }
+        },
+        "versao": "3.10"
+      },
+      "Signature": {
+        "KeyInfo": {
+          "X509Data": {
+            "X509Certificate": "MIIIQjCCBiqgAwIBAgIQVLMIO7dDKDwOgcMsgPnEJTANBgkqhkiG9w0BAQsFADB0MQswCQYDVQQG\nEwJCUjETMBEGA1UEChMKSUNQLUJyYXNpbDEtMCsGA1UECxMkQ2VydGlzaWduIENlcnRpZmljYWRv\ncmEgRGlnaXRhbCBTLkEuMSEwHwYDVQQDExhBQyBDZXJ0aXNpZ24gTXVsdGlwbGEgRzUwHhcNMTUw\nODEwMDAwMDAwWhcNMTgwODA4MjM1OTU5WjCBzDELMAkGA1UEBhMCQlIxEzARBgNVBAoUCklDUC1C\ncmFzaWwxIDAeBgNVBAsUF0F1dGVudGljYWRvIHBvciBBUiBIYXNhMRswGQYDVQQLFBJBc3NpbmF0\ndXJhIFRpcG8gQTMxFTATBgNVBAsUDElEIC0gNTEzMzA4MDEmMCQGA1UEAxMdVEVMQVMgTUVUQUxJ\nQ0FTIFRFTE1FVEFMIExUREExKjAoBgkqhkiG9w0BCQEWG2ZhdHVyYW1lbnRvQHRlbG1ldGFsLmNv\nbS5icjCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJ1L90rZmD3t1k2WWNCPI9NNhTYf\nEC8QN6xQJkIcTbMiuG8pOiYf2kAaGUdB8/oR9xuWjycxBh4qOFFlKa1Wa9yid1muJAqnYGcdS23v\nmQ1pkNaoh7G3scNpZ/Sgv9yUFfs+QamUvF9MapaGZacXrUAD0eh1nMsWb3+5v7PE6KqbRjiFG9hG\nw8j1X1MB2f1I2OioZUC+ZaDMrQ/91CQQvQV6xod4epLaaCk0AKs8f7vA5bu0atMfR+bVRKObo/u9\nahc7G0rL4qfHP35neqeBlzCoEr4I/GCc1g6KB0huVyKDg2VBLgqd0Cz2CW5ycpfmse8gsh2cfN0r\nHc2pusaoHFkCAwEAAaOCA3UwggNxMIG7BgNVHREEgbMwgbCgPQYFYEwBAwSgNAQyMTgwNjE5NDUw\nNTIyODQzNjg5ODAwMDAwMDAwMDAwMDAwMDAwMDAzOTQzNzk2U1NQU1CgHgYFYEwBAwKgFQQTUk9T\nSU5BIEdJVVNUSSBQSUNDQaAZBgVgTAEDA6AQBA42MTIxNzE4ODAwMDExOaAXBgVgTAEDB6AOBAww\nMDAwMDAwMDAwMDCBG2ZhdHVyYW1lbnRvQHRlbG1ldGFsLmNvbS5icjAJBgNVHRMEAjAAMB8GA1Ud\nIwQYMBaAFJ1Qz73/JMqvsTPrF+JCeo5pKo5TMA4GA1UdDwEB/wQEAwIF4DCBiQYDVR0gBIGBMH8w\nfQYGYEwBAgMFMHMwcQYIKwYBBQUHAgEWZWh0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2lnbi5jb20u\nYnIvcmVwb3NpdG9yaW8vZHBjL0FDX0NlcnRpc2lnbl9NdWx0aXBsYS9EUENfQUNfQ2VydGlTaWdu\nTXVsdGlwbGEucGRmMIIBJQYDVR0fBIIBHDCCARgwXKBaoFiGVmh0dHA6Ly9pY3AtYnJhc2lsLmNl\ncnRpc2lnbi5jb20uYnIvcmVwb3NpdG9yaW8vbGNyL0FDQ2VydGlzaWduTXVsdGlwbGFHNS9MYXRl\nc3RDUkwuY3JsMFugWaBXhlVodHRwOi8vaWNwLWJyYXNpbC5vdXRyYWxjci5jb20uYnIvcmVwb3Np\ndG9yaW8vbGNyL0FDQ2VydGlzaWduTXVsdGlwbGFHNS9MYXRlc3RDUkwuY3JsMFugWaBXhlVodHRw\nOi8vcmVwb3NpdG9yaW8uaWNwYnJhc2lsLmdvdi5ici9sY3IvQ2VydGlzaWduL0FDQ2VydGlzaWdu\nTXVsdGlwbGFHNS9MYXRlc3RDUkwuY3JsMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDBDCB\noAYIKwYBBQUHAQEEgZMwgZAwZAYIKwYBBQUHMAKGWGh0dHA6Ly9pY3AtYnJhc2lsLmNlcnRpc2ln\nbi5jb20uYnIvcmVwb3NpdG9yaW8vY2VydGlmaWNhZG9zL0FDX0NlcnRpc2lnbl9NdWx0aXBsYV9H\nNS5wN2MwKAYIKwYBBQUHMAGGHGh0dHA6Ly9vY3NwLmNlcnRpc2lnbi5jb20uYnIwDQYJKoZIhvcN\nAQELBQADggIBALNqp5PvZILoTKNi0flgykSa6OXPWNsFTKO8isZxKysg9dEnDBELKP9qI/6jTQTL\nZxm9kAHnm4/wi3bsnpUkXLdQXJnFpUxvcYuTWqPs+qJPvZMGxEDivUEyxZSluOVa15e5ma7TU+tg\nBaa2PR+Wnv4dpRozgGOjKGj5xT3PzPtxDL2H6dYlCu2sGyUa1TvXCdzY7wQYNFEQfTkzcr4guimJ\nD3h/4A4caNO3ZCeRLJCSYX9gX4OU3hSItxi7NxmiXZ1dqgUPVjvcklJI9B1Khj6wbLjG4zoFccdY\nB3WaTGSvDm9quocv/mlfiXAprLzxyWgYAi2cwLdIIh8Se4frX3LqWWvJ/PiU46CRsr0WkMwMUhXT\n8+Ep/L2/V0FSh1pOCuNlcP5XeI61iJSZaaFfC6xGUT2HydGQiCFCbVZdJ9QANtE9gKShFzfSVBAZ\nJyktbkip6rUtH3IOOrKn6W1xxc2YuP0f/4ol2PbcjHEeemZ2YycsO36f3vt89qYrR1+705l7WbeL\nzUVcdwwgg0oCadVRjBOXAGrm6fVfMuU1LdaJ/48WoyO0zHMvTdgFssTTE+av+sTF9vlee7BxPW3p\n/2pn0sa7AMmhJVoAd4Fc9ps6VExzgw9Pl+070qHTyi4uPtuXkOeIWsWc5aM4di54ZERfRwMmdqZ5\nfd9vLl1XolBQ"
+          }
+        },
+        "SignatureValue": "QhF0zZgbQ6JsrmOQfXKVbW4iUWVkK4C+j8AMVZAKTOBhiiBHDDqDMJdygbFevzU8P+1pvCwWk/Tq\nd9fga/0qKKCvFn90xUMwwC0kMuyVJIqzX1G1u3ePXT2tUWLW0jFzevQPBiaN9YkcC2NKe2ecGvwi\nQT/xYr0aYt/3Nfcy8Ner5K5HStV0k61RHED9TaKHl+pbGCB16iYVXV2UPT8TY7qZKugEPGx2h6x5\nDUxogmS9aZvrMusdYwb9820LdzdPl3L03lJri8ZqfVUB7Gf7+tUG9JTJIqZJd0MNaHUTlJq6ZtmU\n0o3CA4QX0kfRKR2FK8WYzoLQ1UD9d4KEZpCDwA==",
+        "SignedInfo": {
+          "CanonicalizationMethod": {
+            "Algorithm": "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"
+          },
+          "Reference": {
+            "DigestMethod": {
+              "Algorithm": "http://www.w3.org/2000/09/xmldsig#sha1"
+            },
+            "DigestValue": "sYHx5rO6M0y809GyEo9Sxx5bqDg=",
+            "Transforms": {
+              "Transform": [
+                {
+                  "Algorithm": "http://www.w3.org/2000/09/xmldsig#enveloped-signature"
+                },
+                {
+                  "Algorithm": "http://www.w3.org/TR/2001/REC-xml-c14n-20010315"
+                }
+              ]
+            },
+            "URI": "#NFe35160161217188000119550010000114821050500001"
+          },
+          "SignatureMethod": {
+            "Algorithm": "http://www.w3.org/2000/09/xmldsig#rsa-sha1"
+          }
+        },
+        "xmlns": "http://www.w3.org/2000/09/xmldsig#"
+      },
+      "xmlns": "http://www.portalfiscal.inf.br/nfe"
+    },
+    "protNFe": {
+      "infProt": {
+        "chNFe": "35160161217188000119550010000114821050500001",
+        "cStat": "100",
+        "dhRecbto": "2016-01-05T15:41:38-02:00",
+        "digVal": "sYHx5rO6M0y809GyEo9Sxx5bqDg=",
+        "nProt": "135160004504792",
+        "tpAmb": "1",
+        "verAplic": "SP_NFE_PL_008h2",
+        "xMotivo": "Autorizado o uso da NF-e"
+      },
+      "versao": "3.10"
+    },
+    "versao": "3.10",
+    "xmlns": "http://www.portalfiscal.inf.br/nfe"
+  }
+}

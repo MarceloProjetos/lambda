@@ -27,9 +27,9 @@
                "arn":"arn:aws:s3:::email-xml-attachment-files"
             },
             "object":{  
-               "key":"4alim1pcb8kpiasns2rh4srpo4g4tllnoh8c5v01/35160161217188000119550010000114861619550108-procNfe.xml",
-               "size":7734,
-               "eTag":"1c5963a2fd5cb7559986ca4f68f5a590",
+               "key":"gevd5k1uu9c4d2kvb847k1skjtv110afsk49l901/35160161174652000137550010002432571238848176-nfe.xml%3B",
+               "size":7758,
+               "eTag":"68e37687d9b1602af04bf4be622cba91",
                "versionId":"096fKKXTRTtl3on89fVO.nfljtsv6qko",
                "sequencer":"0055AED6DCD90281E5"
             }

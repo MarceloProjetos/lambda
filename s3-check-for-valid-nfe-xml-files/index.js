@@ -120,16 +120,18 @@ exports.handler = function(event, context) {
                     
                 });
 
-                /*var response = dynamo.putItem({
-                 'TableName': tableName,
-                 'Item': new Buffer(data.Body, "utf-8")
+                /*
+                var response = dynamo.putItem({
+                    'TableName': tableName,
+                    'Item': new Buffer(data.Body, "utf-8")
                 }, function(err, data) {
                     if (err) {
                         context.fail(new Error('Error ' + err));
                     } else {
                         context.succeed("Successfully Inserted");
                     }
-                });     */           
+                });
+                */           
             }
         
     });

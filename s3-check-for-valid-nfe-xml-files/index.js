@@ -68,16 +68,37 @@ exports.handler = function(event, context) {
 
                 //console.log("\n\n************************************* Email Raw Content ************************************* \n\n" + data.Body + "\n\n************************************* End Email Raw Content ************************************* \n\n");
 
-                var xml = new Buffer(data.Body, "utf-8");
+                //var xml = new Buffer(data.Body, "utf-8");
 
                 console.log("\nXml length:"+data.Body.length);
 
-                parseXml(xml, {mergeAttrs: true, explicitArray: false, emptyTag: 'null'}, function (err, nfe) {
+                parseXml(data.Body, {mergeAttrs: true, explicitArray: false, emptyTag: 'null'}, function (err, xml) {
                     if (!err) {
-                        if (nfe != undefined && nfe.nfeProc != undefined) {
+                        if (xml != undefined && xml.nfeProc != undefined) {
+                            
                             //console.log(JSON.stringify(nfe));
-                            console.dir('Chave:'+nfe.nfeProc.NFe.infNFe.Id);
-                            nfe.chave = nfe.nfeProc.NFe.infNFe.Id;
+                            console.log('\nChave:'+xml.nfeProc.NFe.infNFe.Id+'\n');
+
+                            var nfe = {
+                                chave: xml.nfeProc.NFe.infNFe.Id,
+                                versao: xml.nfeProc.versao,
+                                nNF: xml.nfeProc.NFe.infNFe.ide.nNF,
+                                dhEmi: xml.nfeProc.NFe.infNFe.ide.dhEmi,
+                                dhSaiEnt: xml.nfeProc.NFe.infNFe.ide.dhSaiEnt,
+                                natOp: xml.nfeProc.NFe.infNFe.ide.natOp,
+                                dest: {
+                                    CNPJ: xml.nfeProc.NFe.infNFe.dest.CNPJ,
+                                    IE: xml.nfeProc.NFe.infNFe.dest.IE,
+                                    xNome: xml.nfeProc.NFe.infNFe.dest.xNome
+                                },
+                                emit: {
+                                    CNPJ: xml.nfeProc.NFe.infNFe.emit.CNPJ,
+                                    IE: xml.nfeProc.NFe.infNFe.emit.IE,
+                                    xNome: xml.nfeProc.NFe.infNFe.emit.xNome
+                                } 
+                            };    
+
+                            console.log(JSON.stringify(nfe));                       
 
                             var response = dynamodb.put({
                              'TableName': tableName,

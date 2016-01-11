@@ -1,0 +1,37 @@
+{
+  "name": "aws-api-gateway-js-sdk",
+  "version": "1.0.0",
+  "description": "For the JavaScript SDK to work your APIs need to support CORS. The Amazon API Gateway developer guide explains how to [setup CORS for an endpoint](). The generated SDK depends on third-party libraries. Include all of the scripts in your webpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alessandro-holanda/lambda.git/aws-api-gateway-js-sdk"
+  },
+  "keywords": [
+    "aws",
+    "gateway",
+    "api"
+  ],
+  "author": "alessandro.holanda@hotmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.2.28",
+    "browser-sync": "^2.11.0",
+    "browserify": "^12.0.2",
+    "gulp": "^3.9.0",
+    "gulp-cachebust": "0.0.6",
+    "gulp-cli": "^1.1.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.8.0",
+    "nodeunit": "^0.9.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

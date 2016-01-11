@@ -1,0 +1,24 @@
+{
+  "name": "s3-check-for-valid-nfe-xml-files",
+  "version": "1.0.0",
+  "description": "check for nfe xml file format and store in dynamodb",
+  "main": "./index.js",
+  "scripts": {
+    "test": "nodeunit test/",
+    "up": "node-lambda run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alessandro-holanda/lambda.git/s3-fetch-mail-attachments"
+  },
+  "author": "alessandro.holanda@hotmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.2.27",
+    "nodeunit": "^0.9.1"
+  },
+  "dependencies": {
+    "amazon-s3-url-signer": "0.0.7",
+    "xml2js": "^0.4.15"
+  }
+}

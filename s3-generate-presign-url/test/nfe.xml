@@ -1,0 +1,18 @@
+{
+  "versao": "3.10",
+  "nNF": "11482",
+  "chave": "NFe35160161217188000119550010000114821050500001",
+  "dhEmi": "2016-01-05T15:19:00-02:00",
+  "dhSaiEnt": "2016-01-05T15:19:00-02:00",
+  "natOp": "VENDAS PARA DENTRO DO ESTADO",
+  "dest": {
+    "CNPJ": "43799295000110",
+    "IE": "109095380110",
+    "xNome": "ALTAMIRA INDUSTRIA  METALURGICA LTDA"
+  },
+  "emit": {
+    "CNPJ": "61217188000119",
+    "IE": "105665535117",
+    "xNome": "TELAS METALICAS TELMETAL LTDA"
+  }
+}

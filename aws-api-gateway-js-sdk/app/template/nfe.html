@@ -1,0 +1,28 @@
+<div ng-controller="SqsCtrl as nfe">
+NFE
+	<table>
+        <thead>
+        <tr>
+        <th>#</th>
+            <th>Emissao</th>
+            <th>Numero</th>
+            <th>Emitente</th>
+            <th>Destinatario</th>
+            <td>Chave</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in nfe.list">
+            <td>{{ $index }}</td>
+            <td>{{ item.dhEmi | date }}</td>
+            <td>{{ item.nNF }}</td>
+            <td>{{ item.emit.xNome }}</td>
+            <td>{{ item.dest.xNome }}</td>
+            <td>{{ item.chave }}</td>
+        </tr>
+        <tr ng-if="nfe.list.length === 0">
+            <td colspan="2">Empty nfe list, add one and refresh!</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

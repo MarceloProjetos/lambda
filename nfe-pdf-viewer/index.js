@@ -14,86 +14,121 @@ exports.handler = function(event, context) {
 
     doc.pipe(f); // # write to PDF
 
+    var layout = {
+    	box: []
+    };
+
     var inch = 30.3;
 
     // centimeters
-    var round = 0.1 * inch;
+    var round = 0.1;
 
-    var margin = { left: 0.8 * inch, top: 1.0 * inch, padding: 0.1 * inch };
+    var margin = { left: 0.5, top: 0, padding: 0.1 };
+    var line = { height: 0.7, width: 0.02 }
 
     /*********************************************************************************
     * box canhoto                                                                    *
     **********************************************************************************
-    |-> offset.0  / margin.left                                 |-> offset.1         |-> offset.2
+
     +---------------------------------------------------------+ +--------------------+
     | box 0                                                   | | box 1              |
     +---------------------------------------------------------+ |                    |
     +------------+ +------------------------------------------+ |                    |
     | box 2      | | box 3                                    | |                    |
     +------------+ +------------------------------------------+ +--------------------+
-                   |-> offset.3                 
+
     *********************************************************************************/
-    var offset_x = [];
 
-    offset_x[0] = margin.left;						// offset 0
-    offset_x[1] = offset_x[0] + (15 * inch);		// offset 1
-    offset_x[2] = offset_x[1] + (4.25 * inch);		// offset 2
-    offset_x[3] = offset_x[0] + (4.3 * inch);		// offset 3
-
-    var box_width = [];
-
-    box_width[0] = offset_x[1] - offset_x[0] - margin.padding;  // box 0
-    box_width[1] = offset_x[2] - offset_x[1];                   // box 1
-    box_width[2] = offset_x[3] - offset_x[0] - margin.padding;	// box 2
-    box_width[3] = offset_x[1] - offset_x[3] - margin.padding;	// box 3
-
-    var box_height = [];
-
-    box_height[0] = 0.8 * inch;											// box 0
-    box_height[1] = 1.0 * inch;											// box 2, 3
-    box_height[2] = box_height[0] + margin.padding + box_height[1];		// box 1
-
-    var offset_y = [];
-
-    offset_y[0] = margin.top;										// box 0, 1
-    offset_y[1] = offset_y[0] + box_height[0] + margin.padding;		// box 2, 3
-
-    var box = [];
-
-    box[0] = { left: offset_x[0], top: offset_y[0], width: box_width[0], height: box_height[0] };
-    box[1] = { left: offset_x[1], top: offset_y[0], width: box_width[1], height: box_height[2] };
-    box[2] = { left: offset_x[0], top: offset_y[1], width: box_width[2], height: box_height[1] };
-    box[3] = { left: offset_x[3], top: offset_y[1], width: box_width[3], height: box_height[1] };
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top, 		width: 14.8, height: 0.8};  // box 1
+	layout.box[layout.box.length] = { left: margin.left + 14.95, 	top: margin.top, 		width: 4.25, height: 1.95}; // box 2
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 0.9,	width: 4.09, height: 1.0};  // box 3
+	layout.box[layout.box.length] = { left: margin.left + 4.3, 		top: margin.top + 0.9,	width: 10.5, height: 1.0};  // box 4
 
     /*********************************************************************************
     * box logo                                                                       *
     **********************************************************************************    
-	|-> offset.0                  |-> offset.4         |-> offset.5                  |-> offset.2                           
-	+-----------------------------+ offset.6 <-|       +-----------------------------+
-	| box 4 (logo)                |            +---+   | box 5 (cod. barra)          |
-	|                             |  0 Entrada |   |   |                             |
-	|                             |  1 Saida   |   |   |+---------------------------+|
-	|                             |            +---+   || box 6 (chave de acesso)   ||
-	|                             |     offset.7 <-|   |+---------------------------+|
-    |                             |                    ||-> offset.8                 |
 	+-----------------------------+                    +-----------------------------+
+	| box 1 (logo)                |            +---+   | box 3 (cod. barra)          |
+	|                             |   box 2 -> |   |   |                             |
+	|                             |            |   |   |+---------------------------+|
+	|                             |            +---+   || box 4 (chave de acesso)   ||
+	|                             |                    |+---------------------------+|
+    |                             |                    |                             |
+	+-----------------------------+                    +-----------------------------+
+
 	**********************************************************************************/
 
-	/*offset_x[4] = offset_x[0] + (20 * inch);		// offset 4
-	offset_x[5] = offset_x[0] + (20 * inch);		// offset 5
-	offset_x[6] = offset_x[5] + (20 * inch);		// offset 6
-	offset_x[7] = offset_x[5] + margin.padding;		// offset 7
-	offset_x[8] = offset_x[5] + margin.padding;		// offset 8
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 2.35, 	width: 6.75, 	height: 2.9};  // box 1
+	layout.box[layout.box.length] = { left: margin.left + 9.2, 		top: margin.top + 3.35, 	width: 0.6, 	height: 0.7};  // box 2
+	layout.box[layout.box.length] = { left: margin.left + 10.5, 	top: margin.top + 2.35, 	width: 8.75, 	height: 2.9};  // box 3
+	layout.box[layout.box.length] = { left: margin.left + 10.7, 	top: margin.top + 3.65, 	width: 8.4, 	height: 0.8};  // box 4
 
-    box_width[4  = offset_x[4] - offset_x[0];  // box 0
-    box_width[5] = offset_x[6] - offset_x[5];  // box 0
-    box_width[6] = offset_x[7] - offset_x[6];  // box 0
+	// box natureza de operacao
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 5.3, 	width: 19.27, 	height: 1.4, line: []};
 
+	// linhas divisorias natureza de operacao
+	var box = layout.box[layout.box.length-1];
+	box.line[box.line.length] = { left: box.left, top: box.top + line.height, 	width: box.left + box.width, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 10.5, top: box.top, 	width: box.left + 10.5, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 3.5, top: box.top + line.height, 	width: box.left + 3.5, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 9.0, top: box.top + line.height, 	width: box.left + 9.0, height: box.top + line.height * 2 };
+	layout.box[layout.box.length-1] = box;
 
-	box[3] = { left: offset_x[3], top: offset_y[1], width: box_width[3], height: box_height[1] };*/
+	// destinatario/remetente
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 7.0, 	width: 19.27, 	height: line.height * 3, line: []};
 
-    for (var i = 0; i < box.length; i++) {
-    	doc.roundedRect(box[i].left, box[i].top, box[i].width, box[i].height, round).stroke();
+	// linhas divisorias destinatario/remetente
+	var box = layout.box[layout.box.length-1];
+	box.line[box.line.length] = { left: box.left, top: box.top + line.height, 	width: box.left + box.width, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left, top: box.top + line.height * 2, 	width: box.left + box.width, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 10, top: box.top, 	width: box.left + 10, height: box.top + line.height * 3 };
+	box.line[box.line.length] = { left: box.left + 16.7, top: box.top, 	width: box.left + 16.7, height: box.top + line.height * 3 };
+	box.line[box.line.length] = { left: box.left + 15.3, top: box.top + line.height, 	width: box.left + 15.3, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 12.2, top: box.top + line.height * 2, 	width: box.left + 12.2, height: box.top + line.height * 3 };
+	box.line[box.line.length] = { left: box.left + 13.2, top: box.top + line.height * 2, 	width: box.left + 13.2, height: box.top + line.height * 3 };
+	box.line[box.line.length] = { left: box.left + 16.7, top: box.top + line.height * 2, 	width: box.left + 16.7, height: box.top + line.height * 3 };
+	layout.box[layout.box.length-1] = box;
+
+	// vencimentos
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 9.4, 	width: 19.27, 	height: 0.9};
+
+	// calculo de impostos
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 10.7, width: 19.27, 	height: 1.8};
+
+	// tranportadora
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 12.3, width: 19.27, 	height: 2.1};
+
+	// dados dos produtos
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 14.7, width: 19.27, 	height: 6.2};
+
+	// calculo do issqn
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 21.3, width: 19.27, 	height: 0.8};
+
+	// dados adicionais
+	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 22.4, width: 19.27, 	height: 2.7};
+
+	/******************************************************************************************************
+	 inicio da renderizacao da pagina
+	******************************************************************************************************/
+    doc.lineWidth(line.width * inch);
+
+    for (var i = 0; i < layout.box.length; i++) {
+    	doc.roundedRect(
+    			layout.box[i].left * inch, 
+    			layout.box[i].top * inch, 
+    			layout.box[i].width * inch, 
+    			layout.box[i].height * inch, 
+    			round).stroke();
+
+    	if (layout.box[i].line) {
+    		for (var l = 0; l < layout.box[i].line.length; l++) {
+    			doc.moveTo(
+    				layout.box[i].line[l].left * inch, 
+	    			layout.box[i].line[l].top * inch).lineTo( 
+	    				layout.box[i].line[l].width * inch,
+	    				layout.box[i].line[l].height * inch);
+    		}
+    	}
     };
 
 	/*

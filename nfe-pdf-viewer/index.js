@@ -67,18 +67,18 @@ exports.handler = function(event, context) {
 	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 5.3, 	width: 19.27, 	height: 1.4, line: []};
 
 	// linhas divisorias natureza de operacao
-	var box = layout.box[layout.box.length-1];
+	var box = layout.box[layout.box.length - 1];
 	box.line[box.line.length] = { left: box.left, top: box.top + line.height, 	width: box.left + box.width, height: box.top + line.height };
 	box.line[box.line.length] = { left: box.left + 10.5, top: box.top, 	width: box.left + 10.5, height: box.top + line.height };
 	box.line[box.line.length] = { left: box.left + 3.5, top: box.top + line.height, 	width: box.left + 3.5, height: box.top + line.height * 2 };
 	box.line[box.line.length] = { left: box.left + 9.0, top: box.top + line.height, 	width: box.left + 9.0, height: box.top + line.height * 2 };
-	layout.box[layout.box.length-1] = box;
+	layout.box[layout.box.length - 1] = box;
 
 	// destinatario/remetente
-	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 7.0, 	width: 19.27, 	height: line.height * 3, line: []};
+	layout.box[layout.box.length] = { left: margin.left, top: margin.top + 7.0, width: 19.27, height: line.height * 3, line: [] };
 
 	// linhas divisorias destinatario/remetente
-	var box = layout.box[layout.box.length-1];
+	var box = layout.box[layout.box.length - 1];
 	box.line[box.line.length] = { left: box.left, top: box.top + line.height, 	width: box.left + box.width, height: box.top + line.height };
 	box.line[box.line.length] = { left: box.left, top: box.top + line.height * 2, 	width: box.left + box.width, height: box.top + line.height * 2 };
 	box.line[box.line.length] = { left: box.left + 10, top: box.top, 	width: box.left + 10, height: box.top + line.height * 3 };
@@ -87,25 +87,108 @@ exports.handler = function(event, context) {
 	box.line[box.line.length] = { left: box.left + 12.2, top: box.top + line.height * 2, 	width: box.left + 12.2, height: box.top + line.height * 3 };
 	box.line[box.line.length] = { left: box.left + 13.2, top: box.top + line.height * 2, 	width: box.left + 13.2, height: box.top + line.height * 3 };
 	box.line[box.line.length] = { left: box.left + 16.7, top: box.top + line.height * 2, 	width: box.left + 16.7, height: box.top + line.height * 3 };
-	layout.box[layout.box.length-1] = box;
+	layout.box[layout.box.length - 1] = box;
 
 	// vencimentos
-	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 9.4, 	width: 19.27, 	height: 0.9};
+	layout.box[layout.box.length] = { left: margin.left, top: margin.top + 9.4, width: 19.27, height: line.height + 0.3, line: [] };
+
+	// linhas divisorias vencimentos
+	var box = layout.box[layout.box.length - 1];
+	box.line[box.line.length] = { left: box.left, top: box.top + 0.3, 	width: box.left + box.width, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 3.8, top: box.top, 	width: box.left + 3.8, height: box.top + line.height + 0.3 };
+	box.line[box.line.length] = { left: box.left + 7.7, top: box.top, 	width: box.left + 7.7, height: box.top + line.height + 0.3 };
+	box.line[box.line.length] = { left: box.left + 11.5, top: box.top, 	width: box.left + 11.5, height: box.top + line.height + 0.3 };
+	box.line[box.line.length] = { left: box.left + 15.4, top: box.top, 	width: box.left + 15.4, height: box.top + line.height + 0.3 };
+	layout.box[layout.box.length - 1] = box;
 
 	// calculo de impostos
-	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 10.7, width: 19.27, 	height: 1.8};
+	layout.box[layout.box.length] = { left: margin.left, top: margin.top + 10.7, width: 19.27, 	height: line.height * 2, line: [] };
+
+	// linhas divisorias calculo de impostos
+	var box = layout.box[layout.box.length - 1];
+	box.line[box.line.length] = { left: box.left, top: box.top + line.height, 	width: box.left + box.width, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 3.25, top: box.top, 	width: box.left + 3.25, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 16.35, top: box.top, 	width: box.left + 16.35, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 6.3, top: box.top, 	width: box.left + 6.3, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 11.2, top: box.top, 	width: box.left + 11.2, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 14.4, top: box.top, 	width: box.left + 14.4, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 5.6, top: box.top + line.height, 	width: box.left + 5.6, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 7.9, top: box.top + line.height, 	width: box.left + 7.9, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 11.3, top: box.top + line.height, 	width: box.left + 11.3, height: box.top + line.height * 2 };
+	layout.box[layout.box.length - 1] = box;
 
 	// tranportadora
-	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 12.3, width: 19.27, 	height: 2.1};
+	layout.box[layout.box.length] = { left: margin.left, top: margin.top + 12.3, width: 19.27, height: line.height * 3, line: [] };
+
+	// linhas divisorias calculo de impostos
+	var box = layout.box[layout.box.length - 1];
+	box.line[box.line.length] = { left: box.left, top: box.top + line.height, 	width: box.left + box.width, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left, top: box.top + line.height  * 2, 	width: box.left + box.width, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 16.4, top: box.top, 	width: box.left + 16.4, height: box.top + line.height * 3 };
+	box.line[box.line.length] = { left: box.left + 8.1, top: box.top, 	width: box.left + 8.1, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 10.9, top: box.top, 	width: box.left + 10.9, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 15.7, top: box.top, 	width: box.left + 15.7, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 13.4, top: box.top, 	width: box.left + 13.4, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 6.75, top: box.top + line.height, 	width: box.left + 6.75, height: box.top + line.height * 2 };
+	box.line[box.line.length] = { left: box.left + 3.2, top: box.top + line.height * 2,	width: box.left + 3.2, height: box.top + line.height * 3 };
+	box.line[box.line.length] = { left: box.left + 6.5, top: box.top + line.height * 2,	width: box.left + 6.5, height: box.top + line.height * 3 };
+	box.line[box.line.length] = { left: box.left + 9.7, top: box.top + line.height * 2,	width: box.left + 9.7, height: box.top + line.height * 3 };
+	box.line[box.line.length] = { left: box.left + 13.0, top: box.top + line.height * 2,	width: box.left + 13.0, height: box.top + line.height * 3 };
+	layout.box[layout.box.length - 1] = box;
 
 	// dados dos produtos
-	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 14.7, width: 19.27, 	height: 6.2};
+	layout.box[layout.box.length] = { left: margin.left, top: margin.top + 14.7, width: 19.27, 	height: 6.2, line: [] };;
+
+	// linhas divisorias vencimentos
+	var box = layout.box[layout.box.length - 1];
+	box.line[box.line.length] = { left: box.left, top: box.top + 0.3, 	width: box.left + box.width, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 2.0, top: box.top, 	width: box.left + 2.0, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 7.2, top: box.top, 	width: box.left + 7.2, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 8.2, top: box.top, 	width: box.left + 8.2, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 8.6, top: box.top, 	width: box.left + 8.6, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 9.2, top: box.top, 	width: box.left + 9.2, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 9.8, top: box.top, 	width: box.left + 9.8, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 11.2, top: box.top, 	width: box.left + 11.2, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 12.8, top: box.top, 	width: box.left + 12.8, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 14.4, top: box.top, 	width: box.left + 14.4, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 15.7, top: box.top, 	width: box.left + 15.7, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 16.9, top: box.top, 	width: box.left + 16.9, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 18.0, top: box.top, 	width: box.left + 18.0, height: box.top + 0.3 };
+	box.line[box.line.length] = { left: box.left + 18.7, top: box.top, 	width: box.left + 18.7, height: box.top + 0.3 };
+
+	box.line[box.line.length] = { left: box.left + 2.0, top: box.top + 0.3, 	width: box.left + 2.0, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 7.2, top: box.top + 0.3, 	width: box.left + 7.2, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 8.2, top: box.top + 0.3, 	width: box.left + 8.2, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 8.6, top: box.top + 0.3, 	width: box.left + 8.6, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 9.2, top: box.top + 0.3, 	width: box.left + 9.2, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 9.8, top: box.top + 0.3, 	width: box.left + 9.8, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 11.2, top: box.top + 0.3, 	width: box.left + 11.2, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 12.8, top: box.top + 0.3, 	width: box.left + 12.8, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 14.4, top: box.top + 0.3, 	width: box.left + 14.4, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 15.7, top: box.top + 0.3, 	width: box.left + 15.7, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 16.9, top: box.top + 0.3, 	width: box.left + 16.9, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 18.0, top: box.top + 0.3, 	width: box.left + 18.0, height: box.top + box.height };
+	box.line[box.line.length] = { left: box.left + 18.7, top: box.top + 0.3, 	width: box.left + 18.7, height: box.top + box.height };
+	layout.box[layout.box.length - 1] = box;
 
 	// calculo do issqn
-	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 21.3, width: 19.27, 	height: 0.8};
+	layout.box[layout.box.length] = { left: margin.left, top: margin.top + 21.3, width: 19.27, 	height: line.height, line: [] };
+
+	// linhas divisorias calculo do issqn
+	var box = layout.box[layout.box.length - 1];
+	box.line[box.line.length] = { left: box.left + 4.8, top: box.top, 	width: box.left + 4.8, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 9.6, top: box.top, 	width: box.left + 9.6, height: box.top + line.height };
+	box.line[box.line.length] = { left: box.left + 14.6, top: box.top, 	width: box.left + 14.6, height: box.top + line.height };
+	layout.box[layout.box.length - 1] = box;
 
 	// dados adicionais
-	layout.box[layout.box.length] = { left: margin.left, 			top: margin.top + 22.4, width: 19.27, 	height: 2.7};
+	layout.box[layout.box.length] = { left: margin.left, top: margin.top + 22.4, width: 19.27, 	height: 2.7, line: [] };
+
+	// linhas divisorias dados adicionais
+	var box = layout.box[layout.box.length - 1];
+	box.line[box.line.length] = { left: box.left + 14.6, top: box.top, 	width: box.left + 14.6, height: box.top + box.height };
+	console.log(JSON.stringify(box));
+	layout.box[layout.box.length - 1] = box;
 
 	/******************************************************************************************************
 	 inicio da renderizacao da pagina
@@ -118,7 +201,7 @@ exports.handler = function(event, context) {
     			layout.box[i].top * inch, 
     			layout.box[i].width * inch, 
     			layout.box[i].height * inch, 
-    			round).stroke();
+    			round * inch).stroke();
 
     	if (layout.box[i].line) {
     		for (var l = 0; l < layout.box[i].line.length; l++) {

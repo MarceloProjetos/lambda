@@ -8,11 +8,7 @@ var doc = new PDFDocument();
 exports.handler = function(event, context) {
     console.log('\nCreating pdf...');
 
-    var f = fs.createWriteStream('file.pdf');
-
     var empresa = { nome: 'ALTAMIRA INDUSTRIA E COMERCIO LTDA' };
-
-    doc.pipe(f); // # write to PDF
 
     var layout = {
     	unit: 30.3, // unit
@@ -36,37 +32,37 @@ exports.handler = function(event, context) {
     *********************************************************************************/
 
     // box 0
-	layout.box[layout.box.length] = { left: 0, 			top: 0, 		width: 14.8, height: 0.8, label: [] }; 
+	layout.box[layout.box.length] = { left: 0, 			top: 0, 		width: 14.8, height: 0.8, text: [] }; 
 
-	// label box 0
+	// text box 0
 	var box = layout.box[layout.box.length - 1];
-	box.label[box.label.length] = { left: layout.margin.padding, top: layout.margin.padding, 	width: box.width, height: box.height, text: 'RECEBEMOS DE ' + empresa.nome + ' OS PRODUTOS CONSTANTES DA NOTA FISCAL INDICADA AO LADO' };
+	box.text[box.text.length] = { left: layout.margin.padding, top: layout.margin.padding, 	width: box.width, height: box.height, text: 'RECEBEMOS DE ' + empresa.nome + ' OS PRODUTOS CONSTANTES DA NOTA FISCAL INDICADA AO LADO' };
 	layout.box[layout.box.length - 1] = box;
 
 	// box 1
-	layout.box[layout.box.length] = { left: 14.95, 	top: 0,   		width: 4.25, height: 1.95, label: [] };
+	layout.box[layout.box.length] = { left: 14.95, 	top: 0,   		width: 4.25, height: 1.95, text: [] };
 
-	// label box 1 
+	// text box 1 
 	var box = layout.box[layout.box.length - 1];
-	box.label[box.label.length] = { left: layout.margin.padding, top: layout.margin.padding, 		width: box.width, height: box.height, text: 'NFe', align: 'center' };
-	box.label[box.label.length] = { left: layout.margin.padding, top: layout.margin.padding + 0.5, 	width: box.width, height: box.height, text: 'Nº 000017220', align: 'center', size: 10, bold: true };
-	box.label[box.label.length] = { left: layout.margin.padding, top: layout.margin.padding + 1.0, 	width: box.width, height: box.height, text: 'SERIE 1', align: 'center', size: 8, bold: true };
+	box.text[box.text.length] = { left: layout.margin.padding, top: layout.margin.padding, 		width: box.width, height: box.height, text: 'NFe', align: 'center' };
+	box.text[box.text.length] = { left: layout.margin.padding, top: layout.margin.padding + 0.5, 	width: box.width, height: box.height, text: 'Nº 000017220', align: 'center', size: 10, bold: true };
+	box.text[box.text.length] = { left: layout.margin.padding, top: layout.margin.padding + 1.0, 	width: box.width, height: box.height, text: 'SERIE 1', align: 'center', size: 8, bold: true };
 	layout.box[layout.box.length - 1] = box;
 
 	// box 2
-	layout.box[layout.box.length] = { left: 0, 	top: 0.9,	width: 4.09, height: 1.0, label: [] }; 
+	layout.box[layout.box.length] = { left: 0, 	top: 0.9,	width: 4.09, height: 1.0, text: [] }; 
 
-	// label box 2
+	// text box 2
 	var box = layout.box[layout.box.length - 1];
-	box.label[box.label.length] = { left: layout.margin.padding, top: layout.margin.padding, 	width: box.width, height: box.height, text: 'DATA DE RECEBIMENTO', align: 'center' };
+	box.text[box.text.length] = { left: layout.margin.padding, top: layout.margin.padding, 	width: box.width, height: box.height, text: 'DATA DE RECEBIMENTO', align: 'center' };
 	layout.box[layout.box.length - 1] = box;
 
 	// box 3
-	layout.box[layout.box.length] = { left: 4.3, 		top: 0.9,	width: 10.5, height: 1.0, label: [] };
+	layout.box[layout.box.length] = { left: 4.3, 		top: 0.9,	width: 10.5, height: 1.0, text: [] };
 
-	// label box 3
+	// text box 3
 	var box = layout.box[layout.box.length - 1];
-	box.label[box.label.length] = { left: layout.margin.padding, top: layout.margin.padding, 	width: box.width, height: box.height, text: 'IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR' };
+	box.text[box.text.length] = { left: layout.margin.padding, top: layout.margin.padding, 	width: box.width, height: box.height, text: 'IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR' };
 	layout.box[layout.box.length - 1] = box;
 
     /*********************************************************************************
@@ -89,7 +85,7 @@ exports.handler = function(event, context) {
 	layout.box[layout.box.length] = { left: 10.7, 	top: 3.65, 	width: 8.4, 	height: 0.8};  // box 4
 
 	// box natureza de operacao
-	layout.box[layout.box.length] = { left: 0, 			top: 5.3, 	width: 19.27, 	height: 1.4, line: [], label: [] };
+	layout.box[layout.box.length] = { left: 0, 			top: 5.3, 	width: 19.27, 	height: 1.4, line: [], text: [] };
 
 	// linhas divisorias natureza de operacao
 	var box = layout.box[layout.box.length - 1];
@@ -99,8 +95,8 @@ exports.handler = function(event, context) {
 
 	// texto de natureza de operacao
 	var box = layout.box[layout.box.length - 1];
-	box.label[box.label.length] = { left: layout.margin.padding, 		 top: layout.margin.padding, 	width: box.width, height: box.height, text: 'NATUREZA DA OPERAÇÃO' };
-	box.label[box.label.length] = { left: layout.margin.padding + 10.5,  top: layout.margin.padding, 	width: box.width, height: box.height, text: 'PROTOCOLO DE AUTORIZAÇÃO DE USO' };
+	box.text[box.text.length] = { left: layout.margin.padding, 		 top: layout.margin.padding, 	width: box.width, height: box.height, text: 'NATUREZA DA OPERAÇÃO' };
+	box.text[box.text.length] = { left: layout.margin.padding + 10.5,  top: layout.margin.padding, 	width: box.width, height: box.height, text: 'PROTOCOLO DE AUTORIZAÇÃO DE USO' };
 	layout.box[layout.box.length - 1] = box;
 
 	// linhas divisorias natureza de operacao
@@ -111,13 +107,13 @@ exports.handler = function(event, context) {
 
 	// texto de natureza de operacao
 	var box = layout.box[layout.box.length - 1];
-	box.label[box.label.length] = { left: layout.margin.padding, 		top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'INSCRIÇÃO ESTADUAL' };
-	box.label[box.label.length] = { left: layout.margin.padding + 3.5,	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'INSCRIÇÃO ESTADUAL DO SUBST. TRIBUTÁRIO' };
-	box.label[box.label.length] = { left: layout.margin.padding + 9.0, 	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'CNPJ' };
+	box.text[box.text.length] = { left: layout.margin.padding, 		top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'INSCRIÇÃO ESTADUAL' };
+	box.text[box.text.length] = { left: layout.margin.padding + 3.5,	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'INSCRIÇÃO ESTADUAL DO SUBST. TRIBUTÁRIO' };
+	box.text[box.text.length] = { left: layout.margin.padding + 9.0, 	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'CNPJ' };
 	layout.box[layout.box.length - 1] = box;
 
 	// destinatario/remetente
-	layout.box[layout.box.length] = { left: 0, top: 7.0, width: 19.27, height: layout.line.height * 3, line: [], label: [] };
+	layout.box[layout.box.length] = { left: 0, top: 7.0, width: 19.27, height: layout.line.height * 3, line: [], text: [] };
 
 	// linhas divisorias destinatario/remetente
 	var box = layout.box[layout.box.length - 1];
@@ -133,18 +129,18 @@ exports.handler = function(event, context) {
 
 	// texto de destinatario/remetente
 	var box = layout.box[layout.box.length - 1];
-	box.label[box.label.length] = { left: layout.margin.padding, 		top: layout.margin.padding, 	width: box.width, height: box.height, text: 'NOME / RAZÃO SOCIAL' };
-	box.label[box.label.length] = { left: layout.margin.padding, 		top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'ENDEREÇO' };
-	box.label[box.label.length] = { left: layout.margin.padding, 		top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'MUNICÍPIO' };
-	box.label[box.label.length] = { left: layout.margin.padding + 10, 	top: layout.margin.padding, 	width: box.width, height: box.height, text: 'CNPJ / CPF' };
-	box.label[box.label.length] = { left: layout.margin.padding + 10, 	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'BAIRRO/DISTRITO' };
-	box.label[box.label.length] = { left: layout.margin.padding + 10, 	top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'FONE/FAX' };
-	box.label[box.label.length] = { left: layout.margin.padding + 16.7,	top: layout.margin.padding, 	width: box.width, height: box.height, text: 'DATA DE EMISSÃO' };
-	box.label[box.label.length] = { left: layout.margin.padding + 16.7,	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'DATA DE SAÍDA/ENTR.' };
-	box.label[box.label.length] = { left: layout.margin.padding + 16.7,	top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'HORA DE SAÍDA' };
-	box.label[box.label.length] = { left: layout.margin.padding + 15.3,	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'CEP' };
-	box.label[box.label.length] = { left: layout.margin.padding + 12.2,	top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'UF' };
-	box.label[box.label.length] = { left: layout.margin.padding + 13.2,	top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'INSCRIÇÃO ESTADUAL' };
+	box.text[box.text.length] = { left: layout.margin.padding, 		top: layout.margin.padding, 	width: box.width, height: box.height, text: 'NOME / RAZÃO SOCIAL' };
+	box.text[box.text.length] = { left: layout.margin.padding, 		top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'ENDEREÇO' };
+	box.text[box.text.length] = { left: layout.margin.padding, 		top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'MUNICÍPIO' };
+	box.text[box.text.length] = { left: layout.margin.padding + 10, 	top: layout.margin.padding, 	width: box.width, height: box.height, text: 'CNPJ / CPF' };
+	box.text[box.text.length] = { left: layout.margin.padding + 10, 	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'BAIRRO/DISTRITO' };
+	box.text[box.text.length] = { left: layout.margin.padding + 10, 	top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'FONE/FAX' };
+	box.text[box.text.length] = { left: layout.margin.padding + 16.7,	top: layout.margin.padding, 	width: box.width, height: box.height, text: 'DATA DE EMISSÃO' };
+	box.text[box.text.length] = { left: layout.margin.padding + 16.7,	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'DATA DE SAÍDA/ENTR.' };
+	box.text[box.text.length] = { left: layout.margin.padding + 16.7,	top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'HORA DE SAÍDA' };
+	box.text[box.text.length] = { left: layout.margin.padding + 15.3,	top: layout.line.height + layout.margin.padding, 	width: box.width, height: box.height, text: 'CEP' };
+	box.text[box.text.length] = { left: layout.margin.padding + 12.2,	top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'UF' };
+	box.text[box.text.length] = { left: layout.margin.padding + 13.2,	top: layout.line.height * 2 + layout.margin.padding, 	width: box.width, height: box.height, text: 'INSCRIÇÃO ESTADUAL' };
 	layout.box[layout.box.length - 1] = box;
 
 	// vencimentos
@@ -197,7 +193,7 @@ exports.handler = function(event, context) {
 	// dados dos produtos
 	layout.box[layout.box.length] = { left: 0, top: 14.7, width: 19.27, height: 6.2, line: [] };;
 
-	// linhas divisorias vencimentos
+	// linhas divisorias produtos
 	var box = layout.box[layout.box.length - 1];
 	box.line[box.line.length] = { left: 0, top: 0 + 0.3, 	right: box.width, 	bottom: 0.3 };
 	box.line[box.line.length] = { left: 2.0, top: 0, 		right: 2.0, 		bottom: 0.3 };
@@ -247,9 +243,21 @@ exports.handler = function(event, context) {
 	box.line[box.line.length] = { left: 14.6, top: 0, 	right: 14.6, bottom: box.height };
 	layout.box[layout.box.length - 1] = box;
 
+	//var json = fs.createWriteStream('nfe.json');
+	//json.write(JSON.stringify(layout, null, 2));
+	
+	JSON.minify = require("node-json-minify");
+
+	var layout = JSON.parse(
+		JSON.minify(
+			fs.readFileSync('nfe.json', { encoding: 'utf-8'})));
+
 	/******************************************************************************************************
 	 configuracoes do documento
 	******************************************************************************************************/
+    var f = fs.createWriteStream('file.pdf');
+    doc.pipe(f); // # write to PDF
+
 	doc/*.font('Arial')*/
 		.fontSize(layout.font.size)
         .lineWidth(layout.line.width * layout.unit)
@@ -259,7 +267,8 @@ exports.handler = function(event, context) {
 	 inicio da renderizacao da pagina
 	******************************************************************************************************/
 
-	console.log(JSON.stringify(layout, null, 2));
+	//console.log(JSON.stringify(layout, null, 2));
+
 
     for (var i = 0; i < layout.box.length; i++) {
     	doc.roundedRect(
@@ -273,33 +282,57 @@ exports.handler = function(event, context) {
     		for (var l = 0; l < layout.box[i].line.length; l++) {
     			doc.moveTo(
     				(layout.margin.left + layout.box[i].left + layout.box[i].line[l].left) * layout.unit, 
-	    			(layout.margin.top + layout.box[i].top + layout.box[i].line[l].top) * layout.unit).lineTo( 
+	    			(layout.margin.top + layout.box[i].top + layout.box[i].line[l].top) * layout.unit)
+    			.lineTo( 
 	    				(layout.margin.left + layout.box[i].left + layout.box[i].line[l].right) * layout.unit,
-	    				(layout.margin.top + layout.box[i].top + layout.box[i].line[l].bottom) * layout.unit);
+	    				(layout.margin.top + layout.box[i].top + layout.box[i].line[l].bottom) * layout.unit)
+    			.fillColor('darkGray').fill();
     		}
     	}
 
-    	if (layout.box[i].label) {
-    		for (var l = 0; l < layout.box[i].label.length; l++) {
-    			if (layout.box[i].label[l].size) {
-    				doc.fontSize(layout.box[i].label[l].size);
+    	if (layout.box[i].text) {
+    		for (var l = 0; l < layout.box[i].text.length; l++) {
+    			if (layout.box[i].text[l].size) {
+    				doc.fontSize(layout.box[i].text[l].size);
     			}
 
-    			doc.text( 	
-    				layout.box[i].label[l].text, 
-		   			(layout.margin.left + layout.box[i].left + layout.box[i].label[l].left) * layout.unit, 
-		   			(layout.margin.top + layout.box[i].top + layout.box[i].label[l].top) * layout.unit,
-	    			{ 
-						width: layout.box[i].label[l].width * layout.unit,
-						height: layout.box[i].label[l].height * layout.unit, 
-						align: layout.box[i].label[l].align ? layout.box[i].label[l].align : 'left',
-						stroke: layout.box[i].label[l].bold ? true : false,
-						fill: layout.box[i].label[l].bold ? true : false,
+    			var padding = 0;
 
+    			if (layout.box[i].text[l].padding) {
+    				padding = layout.box[i].text[l].padding;	
+    			} 
+
+	    		doc.rect((layout.margin.left + 
+		   				layout.box[i].left + 
+		   				layout.box[i].text[l].left + 
+		   				padding) * layout.unit, 
+		   			(layout.margin.top + 
+		   				layout.box[i].top + 
+		   				layout.box[i].text[l].top + 
+		   				padding) * layout.unit,
+		   			(layout.box[i].text[l].width - padding) * layout.unit,
+		   			(layout.box[i].text[l].height - padding) * layout.unit).fillColor('gray').fill();
+
+    			doc.fillColor('black').text( 	
+    				layout.box[i].text[l].text, 
+		   			(layout.margin.left + 
+		   				layout.box[i].left + 
+		   				layout.box[i].text[l].left + 
+		   				padding) * layout.unit, 
+		   			(layout.margin.top + 
+		   				layout.box[i].top + 
+		   				layout.box[i].text[l].top + 
+		   				padding) * layout.unit,
+	    			{ 
+						width: (layout.box[i].text[l].width - padding) * layout.unit, 
+						height: (layout.box[i].text[l].height - padding) * layout.unit, 
+						align: layout.box[i].text[l].align ? layout.box[i].text[l].align : 'left', 
+						//stroke: layout.box[i].text[l].bold ? true : false, 
+						//fill: layout.box[i].text[l].bold ? true : false, 
 	    			} 
 	    		);
 
-    			if (layout.box[i].label[l].size) {
+    			if (layout.box[i].text[l].size) {
     				doc.fontSize(layout.font.size);
     			}
     			

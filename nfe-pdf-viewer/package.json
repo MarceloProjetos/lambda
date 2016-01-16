@@ -18,6 +18,7 @@
     "nodeunit": "^0.9.1"
   },
   "dependencies": {
+    "node-json-minify": "^1.0.0",
     "pdfkit": "^0.7.2"
   }
 }

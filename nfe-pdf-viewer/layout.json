@@ -6,11 +6,12 @@
   "text": [
     { "left": 7, "top": 2.4, "width": 3.2, "height": 0.3, "text": "DANFE", "padding": 0.1, "align": "center", "size": 8, "bold": true },
     { "left": 7, "top": 2.65, "width": 3.2, "height": 0.3, "text": "Documento Auxiliar da", "padding": 0.1, "align": "center", "size": 7 },
-    { "left": 7, "top": 2.9, "width": 3.2, "height": 0.3, "text": "NotaFiscal Eletrônica", "padding": 0.1, "align": "center", "size": 7 },
+    { "left": 7, "top": 2.9, "width": 3.2, "height": 0.3, "text": "Nota Fiscal Eletrônica", "padding": 0.1, "align": "center", "size": 7 },
     { "left": 7.5, "top": 3.35, "width": 1.5, "height": 0.3, "text": "0 - Entrada", "padding": 0.1, "size": 8 },
     { "left": 7.5, "top": 3.65, "width": 1.5, "height": 0.3, "text": "1 - Saida", "padding": 0.1, "size": 8 },
-    { "left": 7, "top": 4.2, "width": 3.2, "height": 0.3, "text": "Nº 000017220", "padding": 0.1, "align": "center", "size": 8 },
-    { "left": 7, "top": 4.6, "width": 3.2, "height": 0.3, "text": "SÉRIE 1", "padding": 0.1, "align": "center", "size": 8 },
+    { "left": 7, "top": 4.1, "width": 3.2, "height": 0.3, "text": "Nº 000017220", "padding": 0.1, "align": "center", "size": 8 },
+    { "left": 7, "top": 4.45, "width": 3.2, "height": 0.3, "text": "SÉRIE 1", "padding": 0.1, "align": "center", "size": 8 },
+    { "left": 7, "top": 4.8, "width": 3.2, "height": 0.3, "text": "FOLHA 1/1", "padding": 0.1, "align": "center", "size": 8 },
 
     { "left": 0.1, "top": 6.85, "width": 19, "height": 0.3, "text": "DESTINATÁRIO / REMETENTE", "size": 7 },
     { "left": 0.1, "top": 9.35, "width": 19, "height": 0.3, "text": "FATURA / DUPLICATA", "size": 7 },

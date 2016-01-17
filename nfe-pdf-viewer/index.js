@@ -17,12 +17,12 @@ exports.handler = function(event, context) {
 
 	var layout = JSON.parse(
 		JSON.minify(
-			fs.readFileSync('nfe.json', { encoding: 'utf-8'})));
+			fs.readFileSync('layout.json', { encoding: 'utf-8'})));
 
 	/******************************************************************************************************
 	 configuracoes do documento
 	******************************************************************************************************/
-    var f = fs.createWriteStream('file.pdf');
+    var f = fs.createWriteStream('nfe.pdf');
     doc.pipe(f); // # write to PDF
 
 	doc/*.font('Arial')*/
@@ -76,7 +76,7 @@ exports.handler = function(event, context) {
     				padding = layout.box[i].text[l].padding;	
     			} 
 
-	    		doc.rect((layout.margin.left + 
+	    		/*doc.rect((layout.margin.left + 
 		   				layout.box[i].left + 
 		   				layout.box[i].text[l].left + 
 		   				padding) * layout.unit, 
@@ -85,7 +85,7 @@ exports.handler = function(event, context) {
 		   				layout.box[i].text[l].top + 
 		   				padding) * layout.unit,
 		   			(layout.box[i].text[l].width - padding) * layout.unit,
-		   			(layout.box[i].text[l].height - padding) * layout.unit).fillColor('gray').fill();
+		   			(layout.box[i].text[l].height - padding) * layout.unit).fillColor('gray').fill();*/
 
     			doc.fillColor('black').text( 	
     				layout.box[i].text[l].text, 

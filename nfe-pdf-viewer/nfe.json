@@ -1,422 +1,206 @@
 {
   "unit": 30.3,
-  "margin": {
-    "left": 0.5,
-    "top": 0,
-    "right": 10,
-    "bottom": 10,
-    "padding": 0.1,
-    "round": 0.1
-  },
-  "line": {
-    "height": 0.7,
-    "width": 0.02
-  },
-  "font": {
-    "size": 6
-  },
+  "margin": { "left": 0.5, "top": 0.5, "right": 10, "bottom": 10, "padding": 0.1, "round": 0.1  },
+  "line": { "height": 0.7, "width": 0.02  },
+  "font": { "size": 6  },
+  "text": [
+    { "left": 7, "top": 2.4, "width": 3.2, "height": 0.3, "text": "DANFE", "padding": 0.1, "align": "center", "size": 8, "bold": true },
+    { "left": 7, "top": 2.65, "width": 3.2, "height": 0.3, "text": "Documento Auxiliar da", "padding": 0.1, "align": "center", "size": 7 },
+    { "left": 7, "top": 2.9, "width": 3.2, "height": 0.3, "text": "NotaFiscal Eletrônica", "padding": 0.1, "align": "center", "size": 7 },
+    { "left": 7.5, "top": 3.35, "width": 1.5, "height": 0.3, "text": "0 - Entrada", "padding": 0.1, "size": 8 },
+    { "left": 7.5, "top": 3.65, "width": 1.5, "height": 0.3, "text": "1 - Saida", "padding": 0.1, "size": 8 },
+    { "left": 7, "top": 4.2, "width": 3.2, "height": 0.3, "text": "Nº 000017220", "padding": 0.1, "align": "center", "size": 8 },
+    { "left": 7, "top": 4.6, "width": 3.2, "height": 0.3, "text": "SÉRIE 1", "padding": 0.1, "align": "center", "size": 8 },
+
+    { "left": 0.1, "top": 6.85, "width": 19, "height": 0.3, "text": "DESTINATÁRIO / REMETENTE", "size": 7 },
+    { "left": 0.1, "top": 9.35, "width": 19, "height": 0.3, "text": "FATURA / DUPLICATA", "size": 7 },
+    { "left": 0.1, "top": 10.75, "width": 19, "height": 0.3, "text": "CÁLCULO DO IMPOSTO", "size": 7 },
+    { "left": 0.1, "top": 12.55, "width": 19, "height": 0.3, "text": "TRANSPORTADOR / VOLUMES TRANSPORTADOS", "size": 7 },
+    { "left": 0.1, "top": 15.05, "width": 19, "height": 0.3, "text": "DADOS DO PRODUTO / SERVIÇOS", "size": 7 },
+    { "left": 0.1, "top": 21.25, "width": 19, "height": 0.3, "text": "CÁLCULO DE ISSQN", "size": 7 },
+    { "left": 0.1, "top": 22.35, "width": 19, "height": 0.3, "text": "DADOS ADICIONAIS", "size": 7 }
+
+  ],
   "box": [
+
+    /* ------------------------------------- CANHOTO DA NOTA ------------------------------------- */
+
     {
-      "left": 0,
-      "top": 0,
-      "width": 14.8,
-      "height": 0.8,
-      "text": [
-        {
-          "left": 0.1,
-          "top": 0.1,
-          "width": 14.5,
-          "height": 0.3,
-          "text": "RECEBEMOS DE ALTAMIRA INDUSTRIA E COMERCIO LTDA OS PRODUTOS CONSTANTES DA NOTA FISCAL INDICADA AO LADO"
-        }
+    "left": 0,
+    "top": 0,
+    "width": 14.9,
+    "height": 0.8,
+    "text": 
+      [
+        { "left": 0.1, "top": 0.1, "width": 14.6, "height": 0.3, "text": "RECEBEMOS DE ALTAMIRA INDUSTRIA E COMERCIO LTDA OS PRODUTOS CONSTANTES DA NOTA FISCAL INDICADA AO LADO" }
       ]
     },
     {
-      "left": 14.95,
-      "top": 0,
-      "width": 4.25,
-      "height": 1.95,
-      "text": [
-        {
-          "left": 0.1,
-          "top": 0.1,
-          "width": 4,
-          "height": 0.3,
-          "text": "NFe",
-          "align": "center"
-        },
-        {
-          "left": 0.1,
-          "top": 0.6,
-          "width": 4,
-          "height": 0.3,
-          "text": "Nº 000017220",
-          "align": "center",
-          "size": 10,
-          "bold": true
-        },
-        {
-          "left": 0.1,
-          "top": 1.1,
-          "width": 4,
-          "height": 0.3,
-          "text": "SERIE 1",
-          "align": "center",
-          "size": 8,
-          "bold": true
-        }
+    "left": 0,
+    "top": 0.9,
+    "width": 4.1,
+    "height": 1,
+    "text": 
+      [
+        { "left": 0.1, "top": 0.1, "width": 3.8, "height": 0.3, "text": "DATA DE RECEBIMENTO", "align": "center" }
       ]
     },
     {
-      "left": 0,
-      "top": 0.9,
-      "width": 4.09,
-      "height": 1,
-      "text": [
-        {
-          "left": 0.1,
-          "top": 0.1,
-          "width": 3.7,
-          "height": 0.3,
-          "text": "DATA DE RECEBIMENTO",
-          "align": "center"
-        }
+    "left": 4.2,
+    "top": 0.9,
+    "width": 10.7,
+    "height": 1,
+    "text": 
+      [
+        { "left": 0.1, "top": 0.1, "width": 10.4, "height": 0.3, "text": "IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR" }
       ]
     },
+
+    /* ------------------------------------- NUMERO / SERIE DA NOTA ------------------------------------- */
+    
     {
-      "left": 4.3,
-      "top": 0.9,
-      "width": 10.5,
-      "height": 1,
-      "text": [
-        {
-          "left": 0.1,
-          "top": 0.1,
-          "width": 10.2,
-          "height": 0.3,
-          "text": "IDENTIFICAÇÃO E ASSINATURA DO RECEBEDOR"
-        }
+    "left": 15,
+    "top": 0,
+    "width": 4.3,
+    "height": 1.9,
+    "text": 
+      [
+        { "left": 0.15, "top": 0.1, "width": 4, "height": 0.3, "text": "NFe", "align": "center" },
+        { "left": 0.15, "top": 0.6, "width": 4, "height": 0.3, "text": "Nº 000017220", "align": "center", "size": 10, "bold": true },
+        { "left": 0.15, "top": 1.1, "width": 4, "height": 0.3, "text": "SERIE 1", "align": "center", "size": 8, "bold": true }
       ]
     },
-    {
-      "left": 0,
-      "top": 2.35,
-      "width": 6.75,
-      "height": 2.9
+
+    /* ------------------------------------- NOME / LOGO EMPRESA ------------------------------------- */
+
+    { "left": 0, "top": 2.35, "width": 6.75, "height": 2.9    },
+
+    /* ------------------------------------- 0 - ENTRADA / 1 - SAIDA ------------------------------------- */
+
+    { "left": 9.2, "top": 3.35, "width": 0.6, "height": 0.7    },
+
+    /* ------------------------------------- CODIGO DE BARRAS ------------------------------------- */
+
+    { "left": 10.5, "top": 2.35, "width": 8.8, "height": 2.9,
+      "text": 
+      [
+        { "left": 0, "top": 0, "width": 8.6, "height": 0.3, "text": "CONTROLE DO FISCO", "padding": 0.1 },
+        { "left": 0.1, "top": 2.1, "width": 8.5, "height": 0.3, "text": "Consulte a autenticidade no portal nacional da NFe", "padding": 0.1 },
+        { "left": 0.1, "top": 2.4, "width": 8.5, "height": 0.3, "text": "www.nfe.fazenda.gov.br/portal ou no site da sefaz autorizadora", "padding": 0.1 }
+      ]
     },
-    {
-      "left": 9.2,
-      "top": 3.35,
-      "width": 0.6,
-      "height": 0.7
+
+    /* ------------------------------------- CHAVE DE ACESSO ------------------------------------- */
+
+    { "left": 10.7, "top": 3.65, "width": 8.4, "height": 0.8,
+      "text":
+      [
+        { "left": 0, "top": 0, "width": 8.3, "height": 0.3, "text": "CHAVE DE ACESSO", "padding": 0.1 }
+      ]
     },
-    {
-      "left": 10.5,
-      "top": 2.35,
-      "width": 8.75,
-      "height": 2.9
-    },
-    {
-      "left": 10.7,
-      "top": 3.65,
-      "width": 8.4,
-      "height": 0.8
-    },
-    {
-      "left": 0,
-      "top": 5.3,
-      "width": 19.27,
-      "height": 1.4,
-      "line": [
-        {
-          "left": 0,
-          "top": 0.7,
-          "right": 19.27,
-          "bottom": 0.7
-        },
-        {
-          "left": 10.5,
-          "top": 0,
-          "right": 10.5,
-          "bottom": 0.7
-        },
-        {
-          "left": 3.5,
-          "top": 0.7,
-          "right": 3.5,
-          "bottom": 1.4
-        },
-        {
-          "left": 9,
-          "top": 0.7,
-          "right": 9,
-          "bottom": 1.4
-        }
+
+    /* ------------------------------------- NATUREZA DA OPERAÇÃO ------------------------------------- */
+
+    { "left": 0, "top": 5.3, "width": 19.3, "height": 1.4,      
+      "line": 
+      [
+        { "left": 0, "top": 0.7, "right": 19.3, "bottom": 0.7 },
+        { "left": 10.5, "top": 0, "right": 10.5, "bottom": 0.7 },
+        { "left": 3.5, "top": 0.7, "right": 3.5, "bottom": 1.4 },
+        { "left": 9, "top": 0.7, "right": 9, "bottom": 1.4 }
       ],
-      "text": [
-        {
-          "left": 0,
-          "top": 0,
-          "width": 10.4,
-          "height": 0.3,
-          "text": "NATUREZA DA OPERAÇÃO",
-          "padding": 0.1
-        },
-        {
-          "left": 10.5,
-          "top": 0,
-          "width": 8.7,
-          "height": 0.3,
-          "text": "PROTOCOLO DE AUTORIZAÇÃO DE USO",
-          "padding": 0.1
-        },
-        {
-          "left": 0,
-          "top": 0.7,
-          "width": 3.4,
-          "height": 0.3,
-          "text": "INSCRIÇÃO ESTADUAL",
-          "padding": 0.1
-        },
-        {
-          "left": 3.5,
-          "top": 0.7,
-          "width": 5.4,
-          "height": 0.3,
-          "text": "INSCRIÇÃO ESTADUAL DO SUBST. TRIBUTÁRIO",
-          "padding": 0.1
-        },
-        {
-          "left": 9,
-          "top": 0.7,
-          "width": 10.2,
-          "height": 0.3,
-          "text": "CNPJ",
-          "padding": 0.1
-        }
+      "text": 
+      [
+        { "left": 0, "top": 0, "width": 10.4, "height": 0.3, "text": "NATUREZA DA OPERAÇÃO", "padding": 0.1 },
+        { "left": 10.5, "top": 0, "width": 8.7, "height": 0.3, "text": "PROTOCOLO DE AUTORIZAÇÃO DE USO", "padding": 0.1 },
+        { "left": 0, "top": 0.7, "width": 3.4, "height": 0.3, "text": "INSCRIÇÃO ESTADUAL", "padding": 0.1 },
+        { "left": 3.5, "top": 0.7, "width": 5.4, "height": 0.3, "text": "INSCRIÇÃO ESTADUAL DO SUBST. TRIBUTÁRIO", "padding": 0.1 },
+        { "left": 9, "top": 0.7, "width": 10.2, "height": 0.3, "text": "C.N.P.J.", "padding": 0.1 }
       ]
     },
+
+    /* ------------------------------------- DESTINATÁRIO / REMETENTE ------------------------------------- */
+
     {
-      "left": 0,
-      "top": 7,
-      "width": 19.27,
-      "height": 2.1,
-      "line": [
-        {
-          "left": 0,
-          "top": 0.7,
-          "right": 19.27,
-          "bottom": 0.7
-        },
-        {
-          "left": 0,
-          "top": 1.4,
-          "right": 19.27,
-          "bottom": 1.4
-        },
-        {
-          "left": 10,
-          "top": 0,
-          "right": 10,
-          "bottom": 2.1
-        },
-        {
-          "left": 16.7,
-          "top": 0,
-          "right": 16.7,
-          "bottom": 2.1
-        },
-        {
-          "left": 15.3,
-          "top": 0.7,
-          "right": 15.3,
-          "bottom": 1.4
-        },
-        {
-          "left": 12.2,
-          "top": 1.4,
-          "right": 12.2,
-          "bottom": 2.1
-        },
-        {
-          "left": 13.2,
-          "top": 1.4,
-          "right": 13.2,
-          "bottom": 2.1
-        },
-        {
-          "left": 16.7,
-          "top": 1.4,
-          "right": 16.7,
-          "bottom": 2.1
-        }
+    "left": 0,
+    "top": 7.1,
+    "width": 19.3,
+    "height": 2.1,
+    "line": 
+      [
+        { "left": 0, "top": 0.7, "right": 19.3, "bottom": 0.7 },
+        { "left": 0, "top": 1.4, "right": 19.3, "bottom": 1.4 },
+        { "left": 10, "top": 0, "right": 10, "bottom": 2.1 },
+        { "left": 16.7, "top": 0, "right": 16.7, "bottom": 2.1 },
+        { "left": 15.3, "top": 0.7, "right": 15.3, "bottom": 1.4 },
+        { "left": 12.2, "top": 1.4, "right": 12.2, "bottom": 2.1 },
+        { "left": 13.2, "top": 1.4, "right": 13.2, "bottom": 2.1 },
+        { "left": 16.7, "top": 1.4, "right": 16.7, "bottom": 2.1 }
       ],
-      "text": [
-        {
-          "left": 0,
-          "top": 0,
-          "width": 9.9,
-          "height": 0.3,
-          "text": "NOME / RAZÃO SOCIAL",
-          "padding": 0.1
-        },
-        {
-          "left": 0,
-          "top": 0.7,
-          "width": 9.9,
-          "height": 0.3,
-          "text": "ENDEREÇO",
-          "padding": 0.1
-        },
-        {
-          "left": 0,
-          "top": 1.4,
-          "width": 9.9,
-          "height": 0.3,
-          "text": "MUNICÍPIO",
-          "padding": 0.1
-        },
-        {
-          "left": 10,
-          "top": 0,
-          "width": 6.6,
-          "height": 0.3,
-          "text": "CNPJ / CPF",
-          "padding": 0.1
-        },
-        {
-          "left": 10,
-          "top": 0.7,
-          "width": 5.2,
-          "height": 0.3,
-          "text": "BAIRRO/DISTRITO",
-          "padding": 0.1
-        },
-        {
-          "left": 10,
-          "top": 1.4,
-          "width": 2.1,
-          "height": 0.3,
-          "text": "FONE/FAX",
-          "padding": 0.1
-        },
-        {
-          "left": 16.7,
-          "top": 0,
-          "width": 2.5,
-          "height": 0.3,
-          "text": "DATA DE EMISSÃO",
-          "padding": 0.1
-        },
-        {
-          "left": 16.7,
-          "top": 0.7,
-          "width": 2.5,
-          "height": 0.3,
-          "text": "DATA DE SAÍDA/ENTR.",
-          "padding": 0.1
-        },
-        {
-          "left": 16.7,
-          "top": 1.4,
-          "width": 2.5,
-          "height": 0.3,
-          "text": "HORA DE SAÍDA",
-          "padding": 0.1
-        },
-        {
-          "left": 15.3,
-          "top": 0.7,
-          "width": 1.3,
-          "height": 0.3,
-          "text": "CEP",
-          "padding": 0.1
-        },
-        {
-          "left": 12.2,
-          "top": 1.4,
-          "width": 0.9,
-          "height": 0.3,
-          "text": "UF",
-          "padding": 0.1
-        },
-        {
-          "left": 13.2,
-          "top": 1.4,
-          "width": 3.4,
-          "height": 0.3,
-          "text": "INSCRIÇÃO ESTADUAL",
-          "padding": 0.1
-        }
+    "text": [
+        { "left": 0, "top": 0, "width": 9.9, "height": 0.3, "text": "NOME / RAZÃO SOCIAL", "padding": 0.1 },
+        { "left": 0, "top": 0.7, "width": 9.9, "height": 0.3, "text": "ENDEREÇO", "padding": 0.1 },
+        { "left": 0, "top": 1.4, "width": 9.9, "height": 0.3, "text": "MUNICÍPIO", "padding": 0.1 },
+        { "left": 10, "top": 0, "width": 6.6, "height": 0.3, "text": "C.N.P.J. / C.P.F.", "padding": 0.1 },
+        { "left": 10, "top": 0.7, "width": 5.2, "height": 0.3, "text": "BAIRRO/DISTRITO", "padding": 0.1 },
+        { "left": 10, "top": 1.4, "width": 2.1, "height": 0.3, "text": "FONE / FAX", "padding": 0.1 },
+        { "left": 16.7, "top": 0, "width": 2.5, "height": 0.3, "text": "DATA DA EMISSÃO", "padding": 0.1 },
+        { "left": 16.7, "top": 0.7, "width": 2.5, "height": 0.3, "text": "DATA ENTRADA/SAÍDA", "padding": 0.1 },
+        { "left": 16.7, "top": 1.4, "width": 2.5, "height": 0.3, "text": "HORA DA SAÍDA", "padding": 0.1 },
+        { "left": 15.3, "top": 0.7, "width": 1.3, "height": 0.3, "text": "CEP", "padding": 0.1 },
+        { "left": 12.2, "top": 1.4, "width": 0.9, "height": 0.3, "text": "UF", "padding": 0.1 },
+        { "left": 13.2, "top": 1.4, "width": 3.4, "height": 0.3, "text": "INSCRIÇÃO ESTADUAL", "padding": 0.1 }
       ]
     },
+
+    /* ------------------------------------- FATURA / VENCIMENTOS ------------------------------------- */
+
     {
-      "left": 0,
-      "top": 9.4,
-      "width": 19.27,
-      "height": 1,
-      "text": [
+    "left": 0,
+    "top": 9.6,
+    "width": 19.3,
+    "height": 1,
+    "text": 
+      [
         /* COLUNA 1 */
-        { "left": 0.1, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA",  "size": 4 },
-        { "left": 2.1, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR",      "size": 4 },
+        { "left": 0.1, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA", "size": 4 },
+        { "left": 2.1, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR", "size": 4 },
         { "left": 2.7, "top": 0.1, "width": 1.0, "height": 0.1, "text": "VENCIMENTO", "size": 4 },
         /* COLUNA 2 */
-        { "left": 3.9, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA",  "size": 4 },
-        { "left": 5.9, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR",      "size": 4 },
+        { "left": 3.9, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA", "size": 4 },
+        { "left": 5.9, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR", "size": 4 },
         { "left": 6.5, "top": 0.1, "width": 1.0, "height": 0.1, "text": "VENCIMENTO", "size": 4 },
         /* COLUNA 3 */
-        { "left": 7.9, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA",  "size": 4 },
-        { "left": 9.9, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR",      "size": 4 },
+        { "left": 7.9, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA", "size": 4 },
+        { "left": 9.9, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR", "size": 4 },
         { "left": 10.4, "top": 0.1, "width": 1.0, "height": 0.1, "text": "VENCIMENTO", "size": 4 },
         /* COLUNA 4 */
-        { "left": 11.7, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA",  "size": 4 },
-        { "left": 13.7, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR",      "size": 4 },
+        { "left": 11.7, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA", "size": 4 },
+        { "left": 13.7, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR", "size": 4 },
         { "left": 14.4, "top": 0.1, "width": 1.0, "height": 0.1, "text": "VENCIMENTO", "size": 4 },
         /* COLUNA 5 */
-        { "left": 15.5, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA",  "size": 4 },
-        { "left": 17.6, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR",      "size": 4 },
+        { "left": 15.5, "top": 0.1, "width": 1.8, "height": 0.1, "text": "DUPLICATA", "size": 4 },
+        { "left": 17.6, "top": 0.1, "width": 0.7, "height": 0.1, "text": "VALOR", "size": 4 },
         { "left": 18.2, "top": 0.1, "width": 1.0, "height": 0.1, "text": "VENCIMENTO", "size": 4 }
       ],
-      "line": [
-        {
-          "left": 0,
-          "top": 0.3,
-          "right": 19.27,
-          "bottom": 0.3
-        },
-        {
-          "left": 3.8,
-          "top": 0,
-          "right": 3.8,
-          "bottom": 1
-        },
-        {
-          "left": 7.7,
-          "top": 0,
-          "right": 7.7,
-          "bottom": 1
-        },
-        {
-          "left": 11.5,
-          "top": 0,
-          "right": 11.5,
-          "bottom": 1
-        },
-        {
-          "left": 15.4,
-          "top": 0,
-          "right": 15.4,
-          "bottom": 1
-        }
+    "line": [
+        { "left": 0, "top": 0.3, "right": 19.3, "bottom": 0.3 },
+        { "left": 3.8, "top": 0, "right": 3.8, "bottom": 1 },
+        { "left": 7.7, "top": 0, "right": 7.7, "bottom": 1 },
+        { "left": 11.5, "top": 0, "right": 11.5, "bottom": 1 },
+        { "left": 15.4, "top": 0, "right": 15.4, "bottom": 1 }
       ]
     },
+
     /* ------------------------------------- CÁLCULO DE IMPOSTOS ------------------------------------- */
+
     {
-      "left": 0,
-      "top": 10.7,
-      "width": 19.27,
-      "height": 1.4,
-      "text": [
+    "left": 0,
+    "top": 11,
+    "width": 19.3,
+    "height": 1.4,
+    "text": 
+      [
         /* linha 1 */
         { "left": 0.1, "top": 0.1, "width": 3.05, "height": 0.3, "text": "BASE DE CÁLCULO DO ICMS", "align": "right" },
         { "left": 3.35, "top": 0.1, "width": 2.8, "height": 0.3, "text": "VALOR DO ICMS", "align": "right" },
@@ -429,80 +213,39 @@
         { "left": 3.35, "top": 0.8, "width": 2.15, "height": 0.3, "text": "VALOR DO SEGURO", "align": "right" },
         { "left": 5.7, "top": 0.8, "width": 2.1, "height": 0.3, "text": "DESCONTO", "align": "right" },
         { "left": 8.0, "top": 0.8, "width": 3.2, "height": 0.3, "text": "OUTRAS DESPESAS ACESSORIAS", "align": "right" },
-        { "left": 11.4, "top": 0.8, "width": 4.85, "height": 0.3, "text": "APROX.TRIBUTOS FEDERAIS/MUNICIPAIS", "align": "right" },
+        { "left": 11.4, "top": 0.8, "width": 4.85, "height": 0.3, "text": "APROX.TRIBUTOS FEDERAIS / MUNICIPAIS", "align": "right" },
         { "left": 16.45, "top": 0.8, "width": 2.7, "height": 0.3, "text": "VALOR TOTAL DA NOTA", "align": "right" }
       ],
-      "line": [
-        {
-          "left": 0,
-          "top": 0.7,
-          "right": 19.27,
-          "bottom": 0.7
-        },
-        {
-          "left": 3.25,
-          "top": 0,
-          "right": 3.25,
-          "bottom": 1.4
-        },
-        {
-          "left": 16.35,
-          "top": 0,
-          "right": 16.35,
-          "bottom": 1.4
-        },
-        {
-          "left": 6.3,
-          "top": 0,
-          "right": 6.3,
-          "bottom": 0.7
-        },
-        {
-          "left": 11.2,
-          "top": 0,
-          "right": 11.2,
-          "bottom": 0.7
-        },
-        {
-          "left": 14.4,
-          "top": 0,
-          "right": 14.4,
-          "bottom": 0.7
-        },
-        {
-          "left": 5.6,
-          "top": 0.7,
-          "right": 5.6,
-          "bottom": 1.4
-        },
-        {
-          "left": 7.9,
-          "top": 0.7,
-          "right": 7.9,
-          "bottom": 1.4
-        },
-        {
-          "left": 11.3,
-          "top": 0.7,
-          "right": 11.3,
-          "bottom": 1.4
-        }
+    "line": 
+      [
+        { "left": 0, "top": 0.7, "right": 19.3, "bottom": 0.7 },
+        { "left": 3.25, "top": 0, "right": 3.25, "bottom": 1.4 },
+        { "left": 16.35, "top": 0, "right": 16.35, "bottom": 1.4 },
+        { "left": 6.3, "top": 0, "right": 6.3, "bottom": 0.7 },
+        { "left": 11.2, "top": 0, "right": 11.2, "bottom": 0.7 },
+        { "left": 14.4, "top": 0, "right": 14.4, "bottom": 0.7 },
+        { "left": 5.6, "top": 0.7, "right": 5.6, "bottom": 1.4 },
+        { "left": 7.9, "top": 0.7, "right": 7.9, "bottom": 1.4 },
+        { "left": 11.3, "top": 0.7, "right": 11.3, "bottom": 1.4 }
       ]
     },
+
     /* ------------------------------------- TRANSPORTADORA ------------------------------------- */
+
     {
-      "left": 0,
-      "top": 12.3,
-      "width": 19.27,
-      "height": 2.1,
-      "text": [
+    "left": 0,
+    "top": 12.8,
+    "width": 19.3,
+    "height": 2.1,
+    "text": 
+      [
         /* linha 1 */
         { "left": 0, "top": 0, "width": 8, "height": 0.3, "text": "RAZÃO SOCIAL", "padding": 0.1 },
         { "left": 8.1, "top": 0, "width": 2.7, "height": 0.3, "text": "FRETE POR CONTA", "padding": 0.1 },
         { "left": 10.9, "top": 0, "width": 2.4, "height": 0.3, "text": "ANTT", "padding": 0.1 },
         { "left": 13.4, "top": 0, "width": 2.2, "height": 0.3, "text": "PLACA DO VEICULO", "padding": 0.1 },
         { "left": 15.65, "top": 0, "width": 0.7, "height": 0.3, "text": "UF", "padding": 0.1, "align": "center" },
-        { "left": 16.4, "top": 0, "width": 2.8, "height": 0.3, "text": "CNPJ/CPF", "padding": 0.1 },
+        { "left": 16.4, "top": 0, "width": 2.8, "height": 0.3, "text": "C.N.P.J. / C.P.F.", "padding": 0.1 },
         /* linha 2 */
         { "left": 0, "top": 0.7, "width": 3.05, "height": 0.3, "text": "ENDEREÇO", "padding": 0.1 },
         { "left": 6.75, "top": 0.7, "width": 2.15, "height": 0.3, "text": "BAIRRO", "padding": 0.1 },
@@ -517,289 +260,123 @@
         { "left": 13, "top": 1.4, "width": 3.3, "height": 0.3, "text": "PESO BRUTO", "align": "right", "padding": 0.1 },
         { "left": 16.4, "top": 1.4, "width": 2.8, "height": 0.3, "text": "PESO LÍQUIDO", "align": "right", "padding": 0.1 }
       ],
-      "line": [
-        {
-          "left": 0,
-          "top": 0.7,
-          "right": 19.27,
-          "bottom": 0.7
-        },
-        {
-          "left": 0,
-          "top": 1.4,
-          "right": 19.27,
-          "bottom": 1.4
-        },
-        {
-          "left": 16.4,
-          "top": 0,
-          "right": 16.4,
-          "bottom": 2.1
-        },
-        {
-          "left": 8.1,
-          "top": 0,
-          "right": 8.1,
-          "bottom": 0.7
-        },
-        {
-          "left": 10.9,
-          "top": 0,
-          "right": 10.9,
-          "bottom": 1.4
-        },
-        {
-          "left": 15.7,
-          "top": 0,
-          "right": 15.7,
-          "bottom": 1.4
-        },
-        {
-          "left": 13.4,
-          "top": 0,
-          "right": 13.4,
-          "bottom": 0.7
-        },
-        {
-          "left": 6.75,
-          "top": 0.7,
-          "right": 6.75,
-          "bottom": 1.4
-        },
-        {
-          "left": 3.2,
-          "top": 1.4,
-          "right": 3.2,
-          "bottom": 2.1
-        },
-        {
-          "left": 6.5,
-          "top": 1.4,
-          "right": 6.5,
-          "bottom": 2.1
-        },
-        {
-          "left": 9.7,
-          "top": 1.4,
-          "right": 9.7,
-          "bottom": 2.1
-        },
-        {
-          "left": 13,
-          "top": 1.4,
-          "right": 13,
-          "bottom": 2.1
-        }
+    "line": [
+        { "left": 0, "top": 0.7, "right": 19.3, "bottom": 0.7 },
+        { "left": 0, "top": 1.4, "right": 19.3, "bottom": 1.4 },
+        { "left": 16.4, "top": 0, "right": 16.4, "bottom": 2.1 },
+        { "left": 8.1, "top": 0, "right": 8.1, "bottom": 0.7 },
+        { "left": 10.9, "top": 0, "right": 10.9, "bottom": 1.4 },
+        { "left": 15.7, "top": 0, "right": 15.7, "bottom": 1.4 },
+        { "left": 13.4, "top": 0, "right": 13.4, "bottom": 0.7 },
+        { "left": 6.75, "top": 0.7, "right": 6.75, "bottom": 1.4 },
+        { "left": 3.2, "top": 1.4, "right": 3.2, "bottom": 2.1 },
+        { "left": 6.5, "top": 1.4, "right": 6.5, "bottom": 2.1 },
+        { "left": 9.7, "top": 1.4, "right": 9.7, "bottom": 2.1 },
+        { "left": 13, "top": 1.4, "right": 13, "bottom": 2.1 }
       ]
     },
+
+    /* ------------------------------------- PRODUTOS ------------------------------------- */
+
     {
-      "left": 0,
-      "top": 14.7,
-      "width": 19.27,
-      "height": 6.2,
-      "line": [
-        {
-          "left": 0,
-          "top": 0.3,
-          "right": 19.27,
-          "bottom": 0.3
-        },
-        {
-          "left": 2,
-          "top": 0,
-          "right": 2,
-          "bottom": 0.3
-        },
-        {
-          "left": 7.2,
-          "top": 0,
-          "right": 7.2,
-          "bottom": 0.3
-        },
-        {
-          "left": 8.2,
-          "top": 0,
-          "right": 8.2,
-          "bottom": 0.3
-        },
-        {
-          "left": 8.6,
-          "top": 0,
-          "right": 8.6,
-          "bottom": 0.3
-        },
-        {
-          "left": 9.2,
-          "top": 0,
-          "right": 9.2,
-          "bottom": 0.3
-        },
-        {
-          "left": 9.8,
-          "top": 0,
-          "right": 9.8,
-          "bottom": 0.3
-        },
-        {
-          "left": 11.2,
-          "top": 0,
-          "right": 11.2,
-          "bottom": 0.3
-        },
-        {
-          "left": 12.8,
-          "top": 0,
-          "right": 12.8,
-          "bottom": 0.3
-        },
-        {
-          "left": 14.4,
-          "top": 0,
-          "right": 14.4,
-          "bottom": 0.3
-        },
-        {
-          "left": 15.7,
-          "top": 0,
-          "right": 15.7,
-          "bottom": 0.3
-        },
-        {
-          "left": 16.9,
-          "top": 0,
-          "right": 16.9,
-          "bottom": 0.3
-        },
-        {
-          "left": 18,
-          "top": 0,
-          "right": 18,
-          "bottom": 0.3
-        },
-        {
-          "left": 18.7,
-          "top": 0,
-          "right": 18.7,
-          "bottom": 0.3
-        },
-        {
-          "left": 2,
-          "top": 0.3,
-          "right": 2,
-          "bottom": 6.2
-        },
-        {
-          "left": 7.2,
-          "top": 0.3,
-          "right": 7.2,
-          "bottom": 6.2
-        },
-        {
-          "left": 8.2,
-          "top": 0.3,
-          "right": 8.2,
-          "bottom": 6.2
-        },
-        {
-          "left": 8.6,
-          "top": 0.3,
-          "right": 8.6,
-          "bottom": 6.2
-        },
-        {
-          "left": 9.2,
-          "top": 0.3,
-          "right": 9.2,
-          "bottom": 6.2
-        },
-        {
-          "left": 9.8,
-          "top": 0.3,
-          "right": 9.8,
-          "bottom": 6.2
-        },
-        {
-          "left": 11.2,
-          "top": 0.3,
-          "right": 11.2,
-          "bottom": 6.2
-        },
-        {
-          "left": 12.8,
-          "top": 0.3,
-          "right": 12.8,
-          "bottom": 6.2
-        },
-        {
-          "left": 14.4,
-          "top": 0.3,
-          "right": 14.4,
-          "bottom": 6.2
-        },
-        {
-          "left": 15.7,
-          "top": 0.3,
-          "right": 15.7,
-          "bottom": 6.2
-        },
-        {
-          "left": 16.9,
-          "top": 0.3,
-          "right": 16.9,
-          "bottom": 6.2
-        },
-        {
-          "left": 18,
-          "top": 0.3,
-          "right": 18,
-          "bottom": 6.2
-        },
-        {
-          "left": 18.7,
-          "top": 0.3,
-          "right": 18.7,
-          "bottom": 6.2
-        }
+    "left": 0,
+    "top": 15.3,
+    "width": 19.3,
+    "height": 5.8,
+    "text": 
+      [
+        /* linha 1 */
+        { "left": 0.1, "top": 0.1, "width": 1.75, "height": 0.15, "text": "CODIGO", "size": 5 },
+        { "left": 2.0, "top": 0.1, "width": 5.1, "height": 0.15, "text": "DESCRIÇÃO", "size": 5 },
+        { "left": 7.3, "top": 0.1, "width": 0.8, "height": 0.15, "text": "NCM", "align": "center", "size": 5 },
+        { "left": 8.225, "top": 0.1, "width": 0.35, "height": 0.15, "text": "CST", "align": "center", "size": 5 },
+        { "left": 8.65, "top": 0.1, "width": 0.5, "height": 0.15, "text": "CFOP", "align": "center", "size": 5 },
+        { "left": 9.25, "top": 0.1, "width": 0.5, "height": 0.15, "text": "UNID", "align": "center", "size": 5 },
+        { "left": 9.9, "top": 0.1, "width": 1.2, "height": 0.15, "text": "QUANTIDADE", "align": "right", "size": 5 },
+        { "left": 11.3, "top": 0.1, "width": 1.4, "height": 0.15, "text": "VALOR UNITÁRIO", "align": "right", "size": 5 },
+        { "left": 12.9, "top": 0.1, "width": 1.4, "height": 0.15, "text": "VALOR TOTAL", "align": "right", "size": 5 },
+        { "left": 14.5, "top": 0.1, "width": 1.1, "height": 0.15, "text": "BASE ICMS", "align": "right", "size": 5 },
+        { "left": 15.8, "top": 0.1, "width": 1.05, "height": 0.15, "text": "VALOR ICMS", "align": "right", "size": 5 },
+        { "left": 17.0, "top": 0.1, "width": 0.85, "height": 0.15, "text": "VALOR IPI", "align": "right", "size": 5 },
+        { "left": 18.0, "top": 0.1, "width": 0.5, "height": 0.15, "text": "ICMS", "align": "right", "size": 5 },
+        { "left": 18.7, "top": 0.1, "width": 0.5, "height": 0.15, "text": "IPI", "align": "right", "size": 5 }
+      ],
+    "line": 
+      [
+        /* ---------------------- LINHA DO CABECALHO DOS PRODUTOS ---------------------- */
+        { "left": 0, "top": 0.3, "right": 19.3, "bottom": 0.3 },
+
+        /* ---------------------- LINHAS DIVISORIAS DE COLUNA DO CABECALHO DOS PRODUTOS ---------------------- */
+
+        { "left": 1.95, "top": 0, "right": 1.95, "bottom": 0.3 },
+        { "left": 7.2, "top": 0, "right": 7.2, "bottom": 0.3 },
+        { "left": 8.2, "top": 0, "right": 8.2, "bottom": 0.3 },
+        { "left": 8.6, "top": 0, "right": 8.6, "bottom": 0.3 },
+        { "left": 9.2, "top": 0, "right": 9.2, "bottom": 0.3 },
+        { "left": 9.8, "top": 0, "right": 9.8, "bottom": 0.3 },
+        { "left": 11.2, "top": 0, "right": 11.2, "bottom": 0.3 },
+        { "left": 12.8, "top": 0, "right": 12.8, "bottom": 0.3 },
+        { "left": 14.4, "top": 0, "right": 14.4, "bottom": 0.3 },
+        { "left": 15.7, "top": 0, "right": 15.7, "bottom": 0.3 },
+        { "left": 16.9, "top": 0, "right": 16.9, "bottom": 0.3 },
+        { "left": 17.95, "top": 0, "right": 17.95, "bottom": 0.3 },
+        { "left": 18.6, "top": 0, "right": 18.6, "bottom": 0.3 },
+
+        /* ---------------------- LINHAS DIVISORIAS DE COLUNA DOS DETALHES DOS PRODUTOS ---------------------- */
+
+        { "left": 1.95, "top": 0.3, "right": 1.95, "bottom": 5.8, "color": "gray" },
+        { "left": 7.2, "top": 0.3, "right": 7.2, "bottom": 5.8, "color": "gray" },
+        { "left": 8.2, "top": 0.3, "right": 8.2, "bottom": 5.8, "color": "gray" },
+        { "left": 8.6, "top": 0.3, "right": 8.6, "bottom": 5.8, "color": "gray" },
+        { "left": 9.2, "top": 0.3, "right": 9.2, "bottom": 5.8, "color": "gray" },
+        { "left": 9.8, "top": 0.3, "right": 9.8, "bottom": 5.8, "color": "gray" },
+        { "left": 11.2, "top": 0.3, "right": 11.2, "bottom": 5.8, "color": "gray" },
+        { "left": 12.8, "top": 0.3, "right": 12.8, "bottom": 5.8, "color": "gray" },
+        { "left": 14.4, "top": 0.3, "right": 14.4, "bottom": 5.8, "color": "gray" },
+        { "left": 15.7, "top": 0.3, "right": 15.7, "bottom": 5.8, "color": "gray" },
+        { "left": 16.9, "top": 0.3, "right": 16.9, "bottom": 5.8, "color": "gray" },
+        { "left": 17.95, "top": 0.3, "right": 17.95, "bottom": 5.8, "color": "gray" },
+        { "left": 18.6, "top": 0.3, "right": 18.6, "bottom": 5.8, "color": "gray" }
       ]
     },
+
+    /* ------------------------------------- CÁLCULO DE ISSQN ------------------------------------- */
+
     {
-      "left": 0,
-      "top": 21.3,
-      "width": 19.27,
-      "height": 0.7,
-      "line": [
-        {
-          "left": 4.8,
-          "top": 0,
-          "right": 4.8,
-          "bottom": 0.7
-        },
-        {
-          "left": 9.6,
-          "top": 0,
-          "right": 9.6,
-          "bottom": 0.7
-        },
-        {
-          "left": 14.6,
-          "top": 0,
-          "right": 14.6,
-          "bottom": 0.7
-        }
+    "left": 0,
+    "top": 21.5,
+    "width": 19.3,
+    "height": 0.7,
+    "text": 
+      [
+        { "left": 0, "top": 0, "width": 4.7, "height": 0.3, "text": "INSCRIÇÃO MUNICIPAL", "padding": 0.1 },
+        { "left": 4.8, "top": 0, "width": 4.7, "height": 0.3, "text": "VALOR TOTAL DOS SERVIÇOS", "padding": 0.1 },
+        { "left": 9.6, "top": 0, "width": 4.7, "height": 0.3, "text": "BASE DE CÁLCULO DO ISSQN", "padding": 0.1 },
+        { "left": 14.4, "top": 0, "width": 4.7, "height": 0.3, "text": "VALOR DO ISSQN", "padding": 0.1 }
+      ],
+    "line": 
+      [
+        { "left": 4.8, "top": 0, "right": 4.8, "bottom": 0.7 },
+        { "left": 9.6, "top": 0, "right": 9.6, "bottom": 0.7 },
+        { "left": 14.4, "top": 0, "right": 14.4, "bottom": 0.7 }
       ]
     },
+
+    /* ------------------------------------- DADOS ADICIONAIS ------------------------------------- */
+
     {
-      "left": 0,
-      "top": 22.4,
-      "width": 19.27,
-      "height": 2.7,
-      "line": [
-        {
-          "left": 14.6,
-          "top": 0,
-          "right": 14.6,
-          "bottom": 2.7
-        }
+    "left": 0,
+    "top": 22.6,
+    "width": 19.3,
+    "height": 2.7,
+    "text": 
+      [
+        { "left": 0, "top": 0, "width": 14.3, "height": 0.3, "text": "INFORMAÇÕES COMPLEMENTARES", "padding": 0.1 },
+        { "left": 14.4, "top": 0, "width": 4.7, "height": 0.3, "text": "RESERVADO AO FISCO", "padding": 0.1 }
+      ],
+    "line": 
+      [
+        { "left": 14.4, "top": 0, "right": 14.4, "bottom": 2.7 }
       ]
     }
   ]

@@ -15,8 +15,17 @@ exports.handler = function(event, context) {
 	
 	JSON.minify = require("node-json-minify");
 
-	var layout = JSON.parse(
-		JSON.minify(
+	// DEBUG
+	/*
+	var json = JSON.minify(
+			fs.readFileSync('layout.json', { encoding: 'utf-8'}))
+
+	console.log('\n-------- start layout minified ------------\n');
+	console.log(json);
+	console.log('\n-------- end layout minified ------------\n');
+	*/
+
+	var layout = JSON.parse(JSON.minify(
 			fs.readFileSync('layout.json', { encoding: 'utf-8'})));
 
 	/******************************************************************************************************
@@ -36,6 +45,7 @@ exports.handler = function(event, context) {
 
 	//console.log(JSON.stringify(layout, null, 2));
 
+	// draw boxes
     for (var i = 0; i < layout.box.length; i++) {
     	doc.roundedRect(
     			(layout.margin.left + layout.box[i].left) * layout.unit, 
@@ -76,6 +86,7 @@ exports.handler = function(event, context) {
     				padding = layout.box[i].text[l].padding;	
     			} 
 
+    			// DEBUG
 	    		/*doc.rect((layout.margin.left + 
 		   				layout.box[i].left + 
 		   				layout.box[i].text[l].left + 
@@ -84,8 +95,8 @@ exports.handler = function(event, context) {
 		   				layout.box[i].top + 
 		   				layout.box[i].text[l].top + 
 		   				padding) * layout.unit,
-		   			(layout.box[i].text[l].width - padding) * layout.unit,
-		   			(layout.box[i].text[l].height - padding) * layout.unit).fillColor('gray').fill();*/
+		   			(layout.box[i].text[l].width - (padding * 2)) * layout.unit,
+		   			(layout.box[i].text[l].height - (padding * 2)) * layout.unit).fillColor('gray').fill();*/
 
     			doc.fillColor('black').text( 	
     				layout.box[i].text[l].text, 
@@ -98,8 +109,8 @@ exports.handler = function(event, context) {
 		   				layout.box[i].text[l].top + 
 		   				padding) * layout.unit,
 	    			{ 
-						width: (layout.box[i].text[l].width - padding) * layout.unit, 
-						height: (layout.box[i].text[l].height - padding) * layout.unit, 
+						width: (layout.box[i].text[l].width - (padding * 2)) * layout.unit, 
+						height: (layout.box[i].text[l].height - (padding * 2)) * layout.unit, 
 						align: layout.box[i].text[l].align ? layout.box[i].text[l].align : 'left', 
 						//stroke: layout.box[i].text[l].bold ? true : false, 
 						//fill: layout.box[i].text[l].bold ? true : false, 
@@ -113,45 +124,50 @@ exports.handler = function(event, context) {
     		}
     	}
 
-    	if (layout.text) {
-    		for (var l = 0; l < layout.text.length; l++) {
-    			if (layout.text[l].size) {
-    				doc.fontSize(layout.text[l].size);
+    	if (layout.box[i].field) {
+    		for (var l = 0; l < layout.box[i].field.length; l++) {
+    			if (layout.box[i].field[l].size) {
+    				doc.fontSize(layout.box[i].field[l].size);
     			}
 
     			var padding = 0;
 
-    			if (layout.text[l].padding) {
-    				padding = layout.text[l].padding;	
+    			if (layout.box[i].field[l].padding) {
+    				padding = layout.box[i].field[l].padding;	
     			} 
 
+    			// DEBUG
 	    		/*doc.rect((layout.margin.left + 
-		   				layout.text[l].left + 
+		   				layout.box[i].left + 
+		   				layout.box[i].field[l].left + 
 		   				padding) * layout.unit, 
 		   			(layout.margin.top + 
-		   				layout.text[l].top + 
+		   				layout.box[i].top + 
+		   				layout.box[i].field[l].top + 
 		   				padding) * layout.unit,
-		   			(layout.text[l].width - padding) * layout.unit,
-		   			(layout.text[l].height - padding) * layout.unit).fillColor('gray').fill();*/
+		   			(layout.box[i].field[l].width - (padding * 2)) * layout.unit,
+		   			(layout.box[i].field[l].height - (padding * 2)) * layout.unit).fillColor('gray').fill();*/
 
     			doc.fillColor('black').text( 	
-    				layout.text[l].text, 
+    				eval(layout.box[i].field[l].value), 
 		   			(layout.margin.left + 
-		   				layout.text[l].left + 
+		   				layout.box[i].left + 
+		   				layout.box[i].field[l].left + 
 		   				padding) * layout.unit, 
 		   			(layout.margin.top + 
-		   				layout.text[l].top + 
+		   				layout.box[i].top + 
+		   				layout.box[i].field[l].top + 
 		   				padding) * layout.unit,
 	    			{ 
-						width: (layout.text[l].width - padding) * layout.unit, 
-						height: (layout.text[l].height - padding) * layout.unit, 
-						align: layout.text[l].align ? layout.text[l].align : 'left', 
-						//stroke: layout.text[l].bold ? true : false, 
-						//fill: layout.text[l].bold ? true : false, 
+						width: (layout.box[i].field[l].width - (padding * 2)) * layout.unit, 
+						height: (layout.box[i].field[l].height - (padding * 2)) * layout.unit, 
+						align: layout.box[i].field[l].align ? layout.box[i].field[l].align : 'left', 
+						//stroke: layout.box[i].text[l].bold ? true : false, 
+						//fill: layout.box[i].text[l].bold ? true : false, 
 	    			} 
 	    		);
 
-    			if (layout.text[l].size) {
+    			if (layout.box[i].field[l].size) {
     				doc.fontSize(layout.font.size);
     			}
     			
@@ -159,6 +175,107 @@ exports.handler = function(event, context) {
     	}
 
     };
+    // end draw boxes
+
+    // draw texts
+	if (layout.text) {
+		for (var l = 0; l < layout.text.length; l++) {
+			if (layout.text[l].size) {
+				doc.fontSize(layout.text[l].size);
+			}
+
+			var padding = 0;
+
+			if (layout.text[l].padding) {
+				padding = layout.text[l].padding;	
+			} 
+
+			// DEBUG
+			/*
+    		doc.rect((layout.margin.left + 
+	   				layout.text[l].left + 
+	   				padding) * layout.unit, 
+	   			(layout.margin.top + 
+	   				layout.text[l].top + 
+	   				padding) * layout.unit,
+	   			(layout.text[l].width - (padding * 2)) * layout.unit,
+	   			(layout.text[l].height - (padding * 2)) * layout.unit).fillColor('gray').fill();*/
+
+			doc.fillColor('black').text( 	
+				layout.text[l].text, 
+	   			(layout.margin.left + 
+	   				layout.text[l].left + 
+	   				padding) * layout.unit, 
+	   			(layout.margin.top + 
+	   				layout.text[l].top + 
+	   				padding) * layout.unit,
+    			{ 
+					width: (layout.text[l].width - (padding * 2)) * layout.unit, 
+					height: (layout.text[l].height - (padding * 2)) * layout.unit, 
+					align: layout.text[l].align ? layout.text[l].align : 'left', 
+					//stroke: layout.text[l].bold ? true : false, 
+					//fill: layout.text[l].bold ? true : false, 
+    			} 
+    		);
+
+			if (layout.text[l].size) {
+				doc.fontSize(layout.font.size);
+			}
+		}
+	}
+	// end draw texts
+
+	// draw fields
+	if (layout.field) {
+		for (var l = 0; l < layout.field.length; l++) {
+
+			console.log('Field: ' + layout.field[l].value);
+			
+			if (layout.field[l].size) {
+				doc.fontSize(layout.field[l].size);
+			}
+
+			var padding = 0;
+
+			if (layout.field[l].padding) {
+				padding = layout.field[l].padding;	
+			} 
+
+			// DEBUG
+			/*
+    		doc.rect((layout.margin.left + 
+	   				layout.field[l].left + 
+	   				padding) * layout.unit, 
+	   			(layout.margin.top + 
+	   				layout.field[l].top + 
+	   				padding) * layout.unit,
+	   			(layout.field[l].width - (padding * 2)) * layout.unit,
+	   			(layout.field[l].height - (padding * 2)) * layout.unit).fillColor('gray').fill();*/
+
+			doc.fillColor('black').text( 	
+				eval(layout.field[l].value), 
+	   			(layout.margin.left + 
+	   				layout.field[l].left + 
+	   				padding) * layout.unit, 
+	   			(layout.margin.top + 
+	   				layout.field[l].top + 
+	   				padding) * layout.unit,
+    			{ 
+					width: (layout.field[l].width - (padding * 2)) * layout.unit, 
+					height: (layout.field[l].height - (padding * 2)) * layout.unit, 
+					align: layout.field[l].align ? layout.field[l].align : 'left', 
+					//stroke: layout.field[l].bold ? true : false, 
+					//fill: layout.field[l].bold ? true : false, 
+    			} 
+    		);
+
+			if (layout.field[l].size) {
+				doc.fontSize(layout.font.size);
+			}
+			
+		}
+	}
+	// end draw fields
 
 	/*
 

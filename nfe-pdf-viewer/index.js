@@ -34,6 +34,8 @@ exports.handler = function(event, context) {
     var f = fs.createWriteStream('nfe.pdf');
     doc.pipe(f); // # write to PDF
 
+	doc.registerFont('codabar', 'font/codabar-large.ttf', 'CodabarLarge')
+
 	doc/*.font('Arial')*/
 		.fontSize(layout.font.size)
         .lineWidth(layout.line.width * layout.unit)
@@ -174,6 +176,61 @@ exports.handler = function(event, context) {
     		}
     	}
 
+    	if (layout.box[i].barcode) {
+    		for (var l = 0; l < layout.box[i].barcode.length; l++) {
+    			if (layout.box[i].barcode[l].size) {
+    				doc.fontSize(layout.box[i].barcode[l].size);
+    			}
+
+    			var padding = 0;
+
+    			if (layout.box[i].barcode[l].padding) {
+    				padding = layout.box[i].barcode[l].padding;	
+    			} 
+
+    			// DEBUG
+	    		/*doc.rect((layout.margin.left + 
+		   				layout.box[i].left + 
+		   				layout.box[i].barcode[l].left + 
+		   				padding) * layout.unit, 
+		   			(layout.margin.top + 
+		   				layout.box[i].top + 
+		   				layout.box[i].barcode[l].top + 
+		   				padding) * layout.unit,
+		   			(layout.box[i].barcode[l].width - (padding * 2)) * layout.unit,
+		   			(layout.box[i].barcode[l].height - (padding * 2)) * layout.unit).fillColor('gray').fill();*/
+				
+				doc.font('codabar');
+
+    			doc.fillColor('black').text( 	
+    				eval(layout.box[i].barcode[l].value), 
+		   			(layout.margin.left + 
+		   				layout.box[i].left + 
+		   				layout.box[i].barcode[l].left + 
+		   				padding) * layout.unit, 
+		   			(layout.margin.top + 
+		   				layout.box[i].top + 
+		   				layout.box[i].barcode[l].top + 
+		   				padding) * layout.unit,
+	    			{ 
+						width: (layout.box[i].barcode[l].width - (padding * 2)) * layout.unit, 
+						height: (layout.box[i].barcode[l].height - (padding * 2)) * layout.unit, 
+						align: layout.box[i].barcode[l].align ? layout.box[i].barcode[l].align : 'left', 
+						//stroke: layout.box[i].text[l].bold ? true : false, 
+						//fill: layout.box[i].text[l].bold ? true : false, 
+	    			} 
+	    		);
+
+    			if (layout.box[i].barcode[l].size) {
+    				doc.fontSize(layout.font.size);
+    			}
+
+    			doc.font('Courier');
+    			doc.font('Helvetica');
+    			
+    		}
+    	}
+
     };
     // end draw boxes
 
@@ -212,7 +269,7 @@ exports.handler = function(event, context) {
     			{ 
 					width: (layout.text[l].width - (padding * 2)) * layout.unit, 
 					height: (layout.text[l].height - (padding * 2)) * layout.unit, 
-					align: layout.text[l].align ? layout.text[l].align : 'left', 
+					align: layout.text[l].align ? layout.text[l].align : 'left',
 					//stroke: layout.text[l].bold ? true : false, 
 					//fill: layout.text[l].bold ? true : false, 
     			} 

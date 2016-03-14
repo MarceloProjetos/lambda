@@ -1,6 +1,10 @@
 "use strict";
 
+var AWS = require('aws-sdk');
+var s3 = new AWS.S3();
+
 var fs = require('fs');
+var zlib = require('zlib');
 
 var PDFDocument = require('pdfkit');
 var doc = new PDFDocument();
@@ -8,7 +12,7 @@ var doc = new PDFDocument();
 exports.handler = function(event, context) {
     console.log('\nCreating pdf...');
 
-    var empresa = { nome: 'ALTAMIRA INDUSTRIA E COMERCIO LTDA' };
+    AWS.config.update({ "accessKeyId": "AKIAJIL7P6ZIPZCMC22Q", "secretAccessKey": "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", "region": "us-east-1" });
 
 	//var json = fs.createWriteStream('nfe.json');
 	//json.write(JSON.stringify(layout, null, 2));
@@ -31,7 +35,7 @@ exports.handler = function(event, context) {
 	/******************************************************************************************************
 	 configuracoes do documento
 	******************************************************************************************************/
-    var f = fs.createWriteStream('nfe.pdf');
+    var f = fs.createWriteStream('nfe.zip');
     doc.pipe(f); // # write to PDF
 
 	doc.registerFont('codabar', 'font/codabar-large.ttf', 'CodabarLarge')
@@ -356,11 +360,27 @@ exports.handler = function(event, context) {
 
 	*/
 
-	f.on('finish',function(){
-		context.succeed('Pdf created.');
-	})
-
     doc.end();
+
+	f.on('finish',function(){
+		console.log('Pdf created.');
+		var body = fs.createReadStream('nfe.pdf')/*.pipe(zlib.createGzip())*/;
+
+		var s3 = new AWS.S3({params: {Bucket: 'nfe-danfe-view', Key: event.nfeProc.NFe.infNFe.Id + '.pdf'}});
+
+		s3.upload({Body: body})
+		  .on('httpUploadProgress', function(evt) { /*console.log(evt);*/ })
+		  .send(function(err, data) { 
+		  	//console.log(err, data); 
+		  	var params = {Bucket: 'nfe-danfe-view', Key: event.nfeProc.NFe.infNFe.Id + '.pdf'};
+
+		  	s3.getSignedUrl('getObject', params, function (err, url) {
+			  	//console.log("The URL is", url);
+		  		context.succeed("done, url: " + url, {url: url});
+			})
+
+		  });
+	})
 
 };
 

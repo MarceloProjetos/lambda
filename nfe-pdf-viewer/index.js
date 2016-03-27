@@ -1,6 +1,10 @@
 "use strict";
 
+var AWS = require('aws-sdk');
+var s3 = new AWS.S3();
+
 var fs = require('fs');
+var zlib = require('zlib');
 
 var PDFDocument = require('pdfkit');
 var doc = new PDFDocument
@@ -34,8 +38,7 @@ exports.handler = function(event, context) {
 	/******************************************************************************************************
 	 configuracoes do documento
 	******************************************************************************************************/
-    var f = fs.createWriteStream('nfe.pdf');
-
+    var f = fs.createWriteStream('/tmp/nfe.pdf');
     doc.pipe(f); // # write to PDF
 
 	doc.registerFont('codabar', 'font/codabar-large.ttf', 'CodabarLarge')
@@ -290,7 +293,7 @@ exports.handler = function(event, context) {
 	if (layout.field) {
 		for (var l = 0; l < layout.field.length; l++) {
 
-			console.log('Field: ' + layout.field[l].value);
+			//console.log('Field: ' + layout.field[l].value);
 			
 			if (layout.field[l].size) {
 				doc.fontSize(layout.field[l].size);
@@ -360,15 +363,19 @@ exports.handler = function(event, context) {
 
 	*/
 
+    doc.end();
+
 	f.on('finish',function(){
+
+	/*
 		s3.upload({
             Bucket: '/nfe-danfe-view',
             Key: event.nfeProc.NFe.infNFe.Id + '.pdf',
             Body: f //stream
         }, function(err, file){
-            /*res.json({
-                success: true
-            });*/
+            //res.json({
+            //    success: true
+            //});
 			console.log('uploaded');
 			context.succeed('Pdf created.');
         }).on('httpUploadProgress', function(evt) { 
@@ -377,9 +384,31 @@ exports.handler = function(event, context) {
             //sockets[req.query.socketId].emit('uploadProgress', evt);
         });		
 		console.log('finish');
-	})
+	*/
+		console.log('Pdf created !');
+		var body = fs.createReadStream('/tmp/nfe.pdf')/*.pipe(zlib.createGzip())*/;
 
-    doc.end();
+		var s3 = new aws.S3({params: {Bucket: 'nfe-danfe-view', Key: event.nfeProc.NFe.infNFe.Id + '.pdf'}});
+
+		s3.upload({Body: body})
+		  .on('httpUploadProgress', function(evt) { /*console.log(evt);*/ })
+		  .send(function(err, data) { 
+
+		  	if (err) {
+		  		console.log('erro =', err); 	
+		  	} else {
+		  		console.log('data =', data);
+
+			  	var params = {Bucket: 'nfe-danfe-view', Key: data.key};
+
+			  	s3.getSignedUrl('getObject', params, function (err, url) {
+				  	//console.log("The URL is", url);
+			  		context.succeed("done, updated to S3 bucket, url: " + url, {url: url});
+				})
+		  	}
+
+		  });
+	})
 
 };
 

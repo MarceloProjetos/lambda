@@ -10,7 +10,6 @@
       { "left": 7, "top": 2.9, "width": 3.2, "height": 0.4, "text": "Nota Fiscal Eletrônica", "padding": 0.1, "align": "center", "size": 7 },
       { "left": 7.2, "top": 3.35, "width": 1.8, "height": 0.4, "text": "0 - Entrada", "padding": 0.1, "size": 8 },
       { "left": 7.2, "top": 3.65, "width": 1.8, "height": 0.4, "text": "1 - Saida", "padding": 0.1, "size": 8 },
-      /*{ "left": 7, "top": 4.1, "width": 3.2, "height": 0.4, "text": "Nº          ", "padding": 0.1, "align": "center", "size": 8 },*/
       { "left": 7, "top": 4.45, "width": 3.2, "height": 0.4, "text": "SÉRIE 1", "padding": 0.1, "align": "center", "size": 8 },
       { "left": 7, "top": 4.8, "width": 3.2, "height": 0.4, "text": "FOLHA 1/1", "padding": 0.1, "align": "center", "size": 8 },
 
@@ -37,9 +36,9 @@
     "top": 0,
     "width": 14.9,
     "height": 0.8,
-    "text": 
+    "field": 
       [
-        { "left": 0.1, "top": 0.1, "width": 14.6, "height": 0.3, "text": "RECEBEMOS DE ALTAMIRA INDUSTRIA E COMERCIO LTDA OS PRODUTOS CONSTANTES DA NOTA FISCAL INDICADA AO LADO" }
+        { "left": 0.1, "top": 0.1, "width": 14.6, "height": 0.3, "value": "'RECEBEMOS DE ' + event.nfeProc.NFe.infNFe.emit.xNome + ' OS PRODUTOS CONSTANTES DA NOTA FISCAL INDICADA AO LADO'", "size": 5 }
       ]
     },
     {
@@ -259,7 +258,7 @@
         /* COLUNA 5, LINHA 1  */
         { "left": 15.5, "top": 0.35, "width": 1.5, "height": 0.1, "value": "event.nfeProc.NFe.infNFe.cobr.dup[4] ? event.nfeProc.NFe.infNFe.cobr.dup[4].nDup : ''" },
         { "left": 17.0, "top": 0.35, "width": 1.0, "height": 0.1, "value": "event.nfeProc.NFe.infNFe.cobr.dup[4] ? event.nfeProc.NFe.infNFe.cobr.dup[4].vDup : ''", "align": "right" },
-        { "left": 18.0, "top": 0.35, "width": 1.1, "height": 0.1, "value": "event.nfeProc.NFe.infNFe.cobr.dup[4] ? event.nfeProc.NFe.infNFe.cobr.dup[4].dVenc : ''", "align": "right" }
+        { "left": 18.0, "top": 0.35, "width": 1.1, "height": 0.1, "value": "event.nfeProc.NFe.infNFe.cobr.dup[4] ? event.nfeProc.NFe.infNFe.cobr.dup[4].dVenc : ''", "align": "right" },
         /* COLUNA 1, LINHA 2 */
         { "left": 0.1, "top": 0.5, "width": 1.5, "height": 0.1, "value": "event.nfeProc.NFe.infNFe.cobr.dup[5] ? event.nfeProc.NFe.infNFe.cobr.dup[5].nDup : ''" },
         { "left": 1.6, "top": 0.5, "width": 1.0, "height": 0.1, "value": "event.nfeProc.NFe.infNFe.cobr.dup[5] ? event.nfeProc.NFe.infNFe.cobr.dup[5].vDup : ''", "align": "right" },

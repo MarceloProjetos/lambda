@@ -3,27 +3,30 @@
 var fs = require('fs');
 
 var PDFDocument = require('pdfkit');
-var doc = new PDFDocument();
- 
+var doc = new PDFDocument
+
+var aws = require('aws-sdk');
+var s3 = new aws.S3();
+
 exports.handler = function(event, context) {
     console.log('\nCreating pdf...');
 
-    var empresa = { nome: 'ALTAMIRA INDUSTRIA E COMERCIO LTDA' };
+    aws.config.update({ "accessKeyId": "AKIAJIL7P6ZIPZCMC22Q", "secretAccessKey": "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", "region": "us-east-1" });
 
 	//var json = fs.createWriteStream('nfe.json');
 	//json.write(JSON.stringify(layout, null, 2));
 	
 	JSON.minify = require("node-json-minify");
 
-	// DEBUG
-	/*
-	var json = JSON.minify(
+	//--------------------------- DEBUG -----------------------------
+	/*var json = JSON.minify(
 			fs.readFileSync('layout.json', { encoding: 'utf-8'}))
 
 	console.log('\n-------- start layout minified ------------\n');
 	console.log(json);
 	console.log('\n-------- end layout minified ------------\n');
 	*/
+	//------------------------- END DEBUG ---------------------------
 
 	var layout = JSON.parse(JSON.minify(
 			fs.readFileSync('layout.json', { encoding: 'utf-8'})));
@@ -32,6 +35,7 @@ exports.handler = function(event, context) {
 	 configuracoes do documento
 	******************************************************************************************************/
     var f = fs.createWriteStream('nfe.pdf');
+
     doc.pipe(f); // # write to PDF
 
 	doc.registerFont('codabar', 'font/codabar-large.ttf', 'CodabarLarge')
@@ -357,7 +361,22 @@ exports.handler = function(event, context) {
 	*/
 
 	f.on('finish',function(){
-		context.succeed('Pdf created.');
+		s3.upload({
+            Bucket: '/nfe-danfe-view',
+            Key: event.nfeProc.NFe.infNFe.Id + '.pdf',
+            Body: f //stream
+        }, function(err, file){
+            /*res.json({
+                success: true
+            });*/
+			console.log('uploaded');
+			context.succeed('Pdf created.');
+        }).on('httpUploadProgress', function(evt) { 
+            //emit progress
+			console.log('upload err: ' + evt);
+            //sockets[req.query.socketId].emit('uploadProgress', evt);
+        });		
+		console.log('finish');
 	})
 
     doc.end();

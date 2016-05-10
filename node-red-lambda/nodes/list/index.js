@@ -13,7 +13,7 @@ exports.handler = function(event, context) {
 				   {
 				      "type":"tab",
 				      "id":"c60520c0.7b35b",
-				      "label":"Fluxo Novo"
+				      "label":"AWS Services"
 				   },
 				   {
 				      "id":"fb2d5585.da75",

@@ -7,66 +7,89 @@ var async = require('async');
 exports.handler = (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
 
-    var params = {
-        TableName : 'node-red-flow',
-        Key : { 
-          "id" : event.params.path.id
-        }
-    };
-    
-    dynamodb.get(params, function(err, data) {
+    async.waterfall([
+        function get(next) {
 
-        if (err) {
-
-          console.log(err); // an error occurred
-          context.fail(err);
-
-        } else {
-
-            if (data.Item === undefined) {
-
-                console.error('Node not found.');
-                context.fail('Node not found.');
-
-            } else {
-
-                console.log('Node found:', JSON.stringify(data.Item, null, 2)); // successful response
-                      
-                var to_list = [];
-
-                data.Item.wires.forEach(function(outputs) {
-                  outputs.forEach(function(node) {
-                    to_list.push(node)
-                  })
-                })
-
-                dispatch_message(context, data.Item.id, to_list || null, data.Item.payload);
-
-            }
+          var params = {
+              TableName : 'node-red-flow',
+              Key : { 
+                "id" : event.params.path.id
+              }
+          };
           
-        }
+          dynamodb.get(params, function(err, data) {
 
+              if (err) {
+
+                console.log(err); // an error occurred
+                context.fail(err);
+
+              } else {
+
+                  if (data.Item === undefined) {
+
+                      console.error('Node not found.');
+                      next('Node not found.');
+
+                  } else {
+
+                      console.log('Node found:', JSON.stringify(data.Item, null, 2)); // successful response
+                            
+                      var to_list = [];
+
+                      data.Item.wires.forEach(function(outputs) {
+                        outputs.forEach(function(node) {
+                          to_list.push(node)
+                        })
+                      })
+
+                      next(err, data.Item);
+
+                  }
+                
+              }
+
+          });
+        },
+        function dispatch(node, next) {
+            var to_list = [];
+
+            node.wires.forEach(function(outputs) {
+              outputs.forEach(function(node) {
+                to_list.push(node)
+              })
+            })
+
+            console.log('Injecting message to this nodes:', to_list);
+            
+            dispatch_message(context, node, to_list || null, node.payload, next);
+                
+            //next();
+        }
+    ], function(err) {
+        if (err) {
+          context.fail('Error: ' + err);
+        }
+        context.done(null, { msg: 'Message dispatch successfully'});
     });
     
 };
 
-function dispatch_message(context, from, to_list, payload) {
+function dispatch_message(context, node, to_list, payload, callback) {
     if (to_list !== undefined && to_list !== null && to_list instanceof Array) {
 
-      var msgs = [];
+      console.log('Dispatching message for nodes:', to_list);
 
-      to_list.forEach(function(to) {
-        msgs.push({
-              id : Guid.newGuid(),
-              from: from,
-              to: to,
-              payload: payload || 'null'
-            })
-      })
+      async.forEachOf(to_list, function(id, key, callback2) {
 
-      async.forEachOf(msgs, function(msg, key, callback) {
-          
-        console.log('Sending message', JSON.stringify(msg, null, 2)); // successful response
+        var msg = {
+          id : Guid.newGuid(),
+          from: node.id,
+          to: id,
+          payload: payload || 'null'
+        };
+
+        console.log('Sending message:\n', JSON.stringify(msg, null, 2)); // successful response
 
         var params = {
           'TableName': 'node-red-msg',
@@ -74,22 +97,22 @@ function dispatch_message(context, from, to_list, payload) {
         }                  
 
         dynamodb.put(params, function(err, data) {
+          console.log('Msg sent successfully to node', id);
             if (err) {
-                callback(new Error("Failed to dispath inject message for one node:" + err.message));
+                callback2(new Error("Failed to dispath inject message for one node:" + err));
             } 
-            callback();
+            callback2(err, data);
         });
           
       }, function(err) {
           
           if (err) {
-              console.error('Unable to dispatch all messages due to an error: ' + err.message);
-              context.fail('Unable to dispatch all messages due to an error: ' + err.message);
+              callback('Unable to dispatch all messages due to an error: ' + err);
           } 
 
           console.log('Successfully dispatch messages.');
-          context.done();
 
+          callback(null);
       });
 
     }

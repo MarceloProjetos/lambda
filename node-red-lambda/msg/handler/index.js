@@ -12,6 +12,11 @@ exports.handler = function(event, context) {
     setup dynamodb to trigger this function for each inserted record
     */
     var record = event.Records[0];
+
+    if (record.eventName != 'INSERT') {
+      context.done(null, '***** NOT AN INSERT REQUEST, ABORT EXECUTION ******');
+    }
+
     var payload = record.dynamodb.NewImage.payload.S;
 
     console.log('Node id: ' + record.dynamodb.NewImage.to.S);
@@ -62,14 +67,14 @@ exports.handler = function(event, context) {
                     exports.debug(context, node, payload, next);
                     break;
                 default:
-                    next(new Error('Message handler for type ' + data.Item.type + ' not implemented.'), null);
+                    next('Message handler for type ' + data.Item.type + ' not implemented.', null);
             }
         }
     ], function(err) {
         if (err) {
-          context.fail(new Error('Error: ' + err.message));
+          context.fail('Error: ' + err);
         }
-        context.done();
+        context.done(null, { msg: 'Message dispatch successfully'});
     });
 
 };
@@ -133,7 +138,7 @@ function dispatch_message(context, node, to_list, payload, callback) {
 
         var msg = {
           id : Guid.newGuid(),
-          from: node.id,
+          from: node.id || '0000000.0000000',
           to: id,
           payload: payload || 'null'
         };
@@ -148,7 +153,7 @@ function dispatch_message(context, node, to_list, payload, callback) {
         dynamodb.put(params, function(err, data) {
           console.log('Msg sent successfully to node', id);
             if (err) {
-                callback2(new Error("Failed to dispath inject message for one node:" + err.message));
+                callback2(new Error("Failed to dispath inject message for one node:" + err));
             } 
             callback2(err, data);
         });
@@ -156,7 +161,7 @@ function dispatch_message(context, node, to_list, payload, callback) {
       }, function(err) {
           
           if (err) {
-              callback('Unable to dispatch all messages due to an error: ' + err.message);
+              callback('Unable to dispatch all messages due to an error: ' + err);
           } 
 
           console.log('Successfully dispatch messages.');

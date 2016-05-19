@@ -1,0 +1,36 @@
+{
+  "Records": [
+    {
+      "eventID": "1",
+      "eventVersion": "1.0",
+      "dynamodb": {
+        "Keys": {
+          "id": {
+            "S": "fd7597d1-e27b-43c1-b97e-befa2c2155f2"
+          }
+        },
+        "NewImage": {
+          "id": {
+            "S": "fd7597d1-e27b-43c1-b97e-befa2c2155f2"
+          },
+          "from": {
+            "S": "0000000.0000000"
+          },
+          "to": {
+            "S": "94b523c6.ad8e7"
+          },
+          "payload": {
+            "S": "\"aBIOAs\""
+          }
+        },
+        "StreamViewType": "NEW_AND_OLD_IMAGES",
+        "SequenceNumber": "111",
+        "SizeBytes": 26
+      },
+      "awsRegion": "us-west-1",
+      "eventName": "INSERT",
+      "eventSourceARN": "arn:aws:dynamodb:us-west-2:account-id:table/ExampleTableWithStream/stream/2015-06-27T00:48:05.899",
+      "eventSource": "aws:dynamodb"
+    }
+  ]
+}

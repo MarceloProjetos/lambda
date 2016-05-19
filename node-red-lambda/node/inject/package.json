@@ -1,0 +1,19 @@
+{
+  "name": "node-red-lambda-node-inject",
+  "version": "1.0.0",
+  "description": "node-red servless node inject",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node-red",
+    "lambda"
+  ],
+  "author": "Alessandro Holanda",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.5.2",
+    "aws-sdk": "^2.3.13"
+  }
+}

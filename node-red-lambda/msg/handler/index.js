@@ -7,15 +7,21 @@ var async = require('async');
 exports.handler = function(event, context) {
     console.log('Received event:', JSON.stringify(event, null, 2));
 
+    for(var i = event.Records.length - 1; i >= 0; i--) {
+        if(event.Records[i].eventName === 'REMOVE' || event.Records[i].eventName === 'UPDATE') {
+           event.Records.splice(i, 1);
+        }
+    }
+
+    if (event.Records.length === 0) {
+      context.done(null, 'The source events list have none INSERT event, abort exection.');
+    }
+
     /*
     Process one message at a time
     setup dynamodb to trigger this function for each inserted record
     */
     var record = event.Records[0];
-
-    if (record.eventName != 'INSERT') {
-      context.done(null, '***** NOT AN INSERT REQUEST, ABORT EXECUTION ******');
-    }
 
     var payload = record.dynamodb.NewImage.payload.S;
 
@@ -93,8 +99,7 @@ exports.inject = function(context, node, payload, callback) {
         console.log('Injecting message to this nodes:', to_list);
         
         dispatch_message(context, node, to_list || null, payload, callback);
-            
-        //next();
+          
     }
   ], function(err) {
     callback(err);

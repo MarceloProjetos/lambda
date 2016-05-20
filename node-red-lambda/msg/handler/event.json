@@ -1,36 +1,100 @@
 {
-  "Records": [
-    {
-      "eventID": "1",
-      "eventVersion": "1.0",
-      "dynamodb": {
-        "Keys": {
-          "id": {
-            "S": "fd7597d1-e27b-43c1-b97e-befa2c2155f2"
-          }
+    "Records": [
+        {
+            "eventID": "b33c88918a9164c6721e57dcbef1bdac",
+            "eventName": "INSERT",
+            "eventVersion": "1.0",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "Keys": {
+                    "id": {
+                        "S": "ed6ebce1-ff41-436f-8985-9b2e78eaf59f"
+                    }
+                },
+                "NewImage": {
+                    "payload": {
+                        "S": "----> LAMBDA TEST <----"
+                    },
+                    "from": {
+                        "S": "cba87466.4e8338"
+                    },
+                    "id": {
+                        "S": "ed6ebce1-ff41-436f-8985-9b2e78eaf59f"
+                    },
+                    "to": {
+                        "S": "b29c8d26.60efc"
+                    }
+                },
+                "SequenceNumber": "3591200000000004615255472",
+                "SizeBytes": 139,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/node-red-msg/stream/2016-05-19T19:57:38.716"
         },
-        "NewImage": {
-          "id": {
-            "S": "fd7597d1-e27b-43c1-b97e-befa2c2155f2"
-          },
-          "from": {
-            "S": "0000000.0000000"
-          },
-          "to": {
-            "S": "c7e34693.b2a468"
-          },
-          "payload": {
-            "S": "\"aBIOAs\""
-          }
+        {
+            "eventID": "29139b8eefbcfe76c6918cc28366801f",
+            "eventName": "INSERT",
+            "eventVersion": "1.0",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "Keys": {
+                    "id": {
+                        "S": "76090b00-ca4b-4d5e-b548-4d4536ee1cca"
+                    }
+                },
+                "NewImage": {
+                    "payload": {
+                        "S": "----> LAMBDA TEST <----"
+                    },
+                    "from": {
+                        "S": "cba87466.4e8338"
+                    },
+                    "id": {
+                        "S": "76090b00-ca4b-4d5e-b548-4d4536ee1cca"
+                    },
+                    "to": {
+                        "S": "c7e34693.b2a468"
+                    }
+                },
+                "SequenceNumber": "3591300000000004615255515",
+                "SizeBytes": 140,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/node-red-msg/stream/2016-05-19T19:57:38.716"
         },
-        "StreamViewType": "NEW_AND_OLD_IMAGES",
-        "SequenceNumber": "111",
-        "SizeBytes": 26
-      },
-      "awsRegion": "us-west-1",
-      "eventName": "INSERT",
-      "eventSourceARN": "arn:aws:dynamodb:us-west-2:account-id:table/ExampleTableWithStream/stream/2015-06-27T00:48:05.899",
-      "eventSource": "aws:dynamodb"
-    }
-  ]
+        {
+            "eventID": "defaa7b03e40544ec661e5f30a55d39d",
+            "eventName": "REMOVE",
+            "eventVersion": "1.0",
+            "eventSource": "aws:dynamodb",
+            "awsRegion": "us-east-1",
+            "dynamodb": {
+                "Keys": {
+                    "id": {
+                        "S": "d2520b19-ec99-455d-9840-520e194af197"
+                    }
+                },
+                "OldImage": {
+                    "payload": {
+                        "S": "***** TA QUASE ******"
+                    },
+                    "from": {
+                        "S": "cba87466.4e8338"
+                    },
+                    "id": {
+                        "S": "d2520b19-ec99-455d-9840-520e194af197"
+                    },
+                    "to": {
+                        "S": "b29c8d26.60efc"
+                    }
+                },
+                "SequenceNumber": "3986200000000005701890560",
+                "SizeBytes": 139,
+                "StreamViewType": "NEW_AND_OLD_IMAGES"
+            },
+            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/node-red-msg/stream/2016-05-20T13:59:31.532"
+        }        
+    ]
 }

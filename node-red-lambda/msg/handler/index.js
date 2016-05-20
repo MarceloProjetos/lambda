@@ -13,16 +13,7 @@ exports.handler = function(event, context) {
         }
     }
 
-    if (event.Records.length === 0) {
-      context.done(null, 'The source events list have none INSERT event, abort exection.');
-    }
-
-    /*
-    Process one message at a time
-    setup dynamodb to trigger this function for each inserted record
-    */
-    var record = event.Records[0];
-
+  async.forEachOf(event.Records, function(record, key, insert_callback) {
     var payload = record.dynamodb.NewImage.payload.S;
 
     console.log('Node id: ' + record.dynamodb.NewImage.to.S);
@@ -78,10 +69,21 @@ exports.handler = function(event, context) {
         }
     ], function(err) {
         if (err) {
-          context.fail('Error: ' + err);
-        }
-        context.done(null, { msg: 'Message dispatch successfully'});
+            insert_callback('Unable to dispatch all messages due to an error: ' + err);
+        } 
+
+        console.log('Successfully dispatch messages.');
+
+        insert_callback(null);
     });
+
+  }, function(err) {
+      if (err) {
+        context.fail('Error: ' + err);
+      }
+      context.done(null, { msg: 'Message dispatch successfully'});          
+
+  });
 
 };
 

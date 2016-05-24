@@ -64,7 +64,7 @@ exports.handler = function(event, context) {
                     exports.debug(context, node, payload, next);
                     break;
                 default:
-                    next('Message handler for type ' + data.Item.type + ' not implemented.', null);
+                    next('*** Message handler for type ' + node.type + ' not implemented ***', null);
             }
         }
     ], function(err) {
@@ -115,7 +115,7 @@ exports.debug = function(context, node, payload, callback) {
       function dispatch(next) {
         var params = {
           Bucket: 'node-red-msg',
-          Key: Guid.newGuid(),
+          Key: Guid.newGuid() + '.json',
           Body: JSON.stringify(node, null, 2)
         }
 

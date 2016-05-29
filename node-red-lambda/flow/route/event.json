@@ -1,0 +1,22 @@
+{
+    "Records": [
+        {
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-ses-in:fdaa4b82-7832-47b0-9905-9a579f128915",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "8e710316-4ad7-57c1-b077-4ca8dc5be9c3",
+                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-ses-in",
+                "Subject": "Amazon SES Email Receipt Notification",
+				"Message" : "{\"id\":\"hvmhlrfqhqcmbbl76ha2ijkbe68fh7h85h3d9qg1\",\"from\":\"7c9ea397.dc777c\",\"to\":\"3cca6bde.1bde04\",\"payload\":{\"bucket\":\"node-red-aws-ses-in\",\"key\":\"hvmhlrfqhqcmbbl76ha2ijkbe68fh7h85h3d9qg1\"}}",
+                "Timestamp": "2016-05-24T17:50:04.345Z",
+                "SignatureVersion": "1",
+                "Signature": "EOXSEix4sEkSKFPWYt2qln8CyHJufizX7cB2WWNKBORQzyz4CNvANZvjy+j94+R9+aw/ArMsimqWkaapRJfAaXqcJVgFZMtN5e+hUjfnCT4qXaEuXEnxq5Jc0+0T0GfPeswprTGGtX/Tt8WiW6UkTpwvpZ1hi7MjcIPHeJPoxITqxFZpqgRikrE/Vmv1oKTFLHcwPiTF/HdKDkkk5DTjuBM042vuppOpRyGeIjLX8v+ErNI8eh0tGXPdQOnt01UwxHPLfCOzIe9mTvN/OpUlq0oXT3d1voTqlFuWPSgtY+Sx1FHeafm+GDoc2knkcMgvO/Gt+mV88TOs5FW6SuGghA==",
+                "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-bb750dd426d95ee9390147a5624348ee.pem",
+                "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:631712212114:node-red-aws-ses-in:fdaa4b82-7832-47b0-9905-9a579f128915",
+                "MessageAttributes": {}
+            }
+        }
+    ]
+}

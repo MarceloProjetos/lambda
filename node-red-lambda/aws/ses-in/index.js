@@ -85,19 +85,27 @@ exports.handler = function(event, context) {
 
 		        async.forEachOf(to_list, function(node, key, callback2) {
 
-			        var msg = {
-			          from: node.from || '0000000.0000000',
-			          to: node.to,
-			          key : payload.key, //Guid.newGuid(),
-			          bucket: payload.bucket || null,
+		        	var msg = {
+				          id : payload.key, //Guid.newGuid(),
+				          from: node.from || '0000000.0000000',
+				          to: node.to,
+				          payload: {
+				          	bucket: payload.bucket || null,
+				          	key: payload.key || null
+				          }
+				          
+			        	}
+
+			        var message = {
+			        	default: JSON.stringify(msg)
 			        };
 
 			        console.log('\nSending message:\n', JSON.stringify(msg, null, 2)); // successful response
 
 					sns.publish({
-						Message: JSON.stringify(msg, null, 2),
+						Message: JSON.stringify(message),
 						MessageStructure: 'json',
-						TargetArn: 'arn:aws:sns:us-east-1:631712212114:node-red-msg-handler'
+						TopicArn: 'arn:aws:sns:us-east-1:631712212114:node-red-flow-route'
 						}, function(err, data) {
 				            callback2(err, data);
 				    });  

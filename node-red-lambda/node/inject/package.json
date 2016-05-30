@@ -1,5 +1,5 @@
 {
-  "name": "node-red-lambda-node-inject",
+  "name": "node-red-aws-lambda-node-inject",
   "version": "1.0.0",
   "description": "node-red servless node inject",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "lambda"
   ],
   "author": "Alessandro Holanda",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "async": "^1.5.2",
     "aws-sdk": "^2.3.13"

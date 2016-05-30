@@ -6,7 +6,7 @@ var sns = new AWS.SNS();
 
 var async = require('async');
 
-var topicArn = 'arn:aws:sns:us-east-1:631712212114:node-red-node-';
+var topicArn = 'arn:aws:sns:us-east-1:631712212114:node-red-';
 
 exports.handler = function(event, context) {
     //console.log('Received event:', JSON.stringify(event, null, 2));

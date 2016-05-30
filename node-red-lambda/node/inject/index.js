@@ -2,13 +2,18 @@
 
 var AWS = require('aws-sdk');
 var dynamodb = new AWS.DynamoDB.DocumentClient();
+var s3 = new AWS.S3();
+var sns = new AWS.SNS();
+
 var async = require('async');
+
+var topicArn = 'arn:aws:sns:us-east-1:631712212114:node-red-flow-route';
 
 exports.handler = (event, context, callback) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
 
     async.waterfall([
-        function get(next) {
+        function lookup_node(next) {
 
           var params = {
               TableName : 'node-red-flow',
@@ -35,14 +40,6 @@ exports.handler = (event, context, callback) => {
 
                       console.log('Node found:', JSON.stringify(data.Item, null, 2)); // successful response
                             
-                      var to_list = [];
-
-                      data.Item.wires.forEach(function(outputs) {
-                        outputs.forEach(function(node) {
-                          to_list.push(node)
-                        })
-                      })
-
                       next(err, data.Item);
 
                   }
@@ -62,9 +59,46 @@ exports.handler = (event, context, callback) => {
 
             console.log('Injecting message to this nodes:', to_list);
             
-            dispatch_message(context, node, to_list || null, node.payload, next);
+            async.forEachOf(to_list, function(to, key, callback) {
+
+              var msg = {
+                  from: node.id || '0000000.0000000',
+                  to: to,
+                  payload: {
+                    bucket: node.payload.bucket || null,
+                    key: node.payload.key || null
+                  }
+                  
+                }
+
+              var message = {
+                default: JSON.stringify(msg)
+              };
+
+              console.log('\nSending message:\n', JSON.stringify(msg, null, 2)); // successful response
+
+              sns.publish({
+                Message: JSON.stringify(message),
+                MessageStructure: 'json',
+                TopicArn: topicArn
+              }, function(err, data) {
+                if (!err) {
+                  console.log('\Successfully dispatch SNS message:\n', JSON.stringify(message, null, 2)); // successful response
+                }
+                callback(err, data);
+              });       
                 
-            //next();
+            }, function(err) {
+                
+                if (err) {
+                    next('Unable to dispatch all messages due to an error: ' + err);
+                } 
+
+                console.log('Successfully dispatch messages.');
+
+                next(null);
+            });
+
         }
     ], function(err) {
         if (err) {
@@ -74,50 +108,6 @@ exports.handler = (event, context, callback) => {
     });
     
 };
-
-function dispatch_message(context, node, to_list, payload, callback) {
-    if (to_list !== undefined && to_list !== null && to_list instanceof Array) {
-
-      console.log('Dispatching message for nodes:', to_list);
-
-      async.forEachOf(to_list, function(id, key, callback2) {
-
-        var msg = {
-          id : Guid.newGuid(),
-          from: node.id,
-          to: id,
-          payload: payload || 'null'
-        };
-
-        console.log('Sending message:\n', JSON.stringify(msg, null, 2)); // successful response
-
-        var params = {
-          'TableName': 'node-red-msg',
-          'Item': msg
-        }                  
-
-        dynamodb.put(params, function(err, data) {
-          console.log('Msg sent successfully to node', id);
-            if (err) {
-                callback2(new Error("Failed to dispath inject message for one node:" + err));
-            } 
-            callback2(err, data);
-        });
-          
-      }, function(err) {
-          
-          if (err) {
-              callback('Unable to dispatch all messages due to an error: ' + err);
-          } 
-
-          console.log('Successfully dispatch messages.');
-
-          callback(null);
-      });
-
-    }
-
-}
 
 function uuid() {
     return Math.random().toString(36).substring(2, 15) +

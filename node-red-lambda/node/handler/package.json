@@ -1,5 +1,5 @@
 {
-  "name": "node-red-lambda-node-handler",
+  "name": "node-red-aws-lambda-node-handler",
   "version": "1.0.0",
   "description": "node-red servless node handler",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alessandro Holanda",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "async": "^1.5.2",
     "aws-sdk": "^2.3.13"

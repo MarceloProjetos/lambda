@@ -1,13 +1,13 @@
 {
-  "name": "node-red-aws-ses-in",
+  "name": "node-red-aws-lambda-ses-in",
   "version": "1.0.0",
-  "description": "node red aws ses email in",
+  "description": "node red aws ses incomming mail.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alessandro Holanda",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "async": "^1.5.2",
     "aws-sdk": "^2.3.14"

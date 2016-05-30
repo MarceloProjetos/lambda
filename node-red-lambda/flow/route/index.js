@@ -6,8 +6,10 @@ var sns = new AWS.SNS();
 
 var async = require('async');
 
+var topicArn = 'arn:aws:sns:us-east-1:631712212114:node-red-node-';
+
 exports.handler = function(event, context) {
-    console.log('Received event:', JSON.stringify(event, null, 2));
+    //console.log('Received event:', JSON.stringify(event, null, 2));
 
     // remove unused messages
     for(var i = event.Records.length - 1; i >= 0; i--) {
@@ -19,6 +21,8 @@ exports.handler = function(event, context) {
 	async.forEachOf(event.Records, function(record, key, callback) {
 
 	    var message = JSON.parse(record.Sns.Message)
+
+	    console.log('Received message:\n', message);
 
 	    async.waterfall([
 	        function get(next) {
@@ -52,61 +56,46 @@ exports.handler = function(event, context) {
 
 	                        //console.log('\nNodes found:\n', JSON.stringify(data.Items, null, 2)); // successful response
 
-	                        next(err, data.Item);
+	                        next(err, { message: message, node: data.Item });
 	                    
 	                    }
 	                }
 	            });
 	        },
-	        function handler(node, next) {
+	        function handler(msg, next) {
 
-		        var to_list = [];
+	        	var message = msg.message;
+	        	var node = msg.node;
 
-		        node.wires.forEach(function(outputs) {
-		          outputs.forEach(function(destination) {
-		            to_list.push({from: node.id, type: node.type, to: destination})
-		          })
-		        })
+	        	console.log('Routing message...', message);
 
-		        async.forEachOf(to_list, function(node, key, callback2) {
+	        	var msg = {
+			          from: message.from || '0000000.0000000',
+			          to: message.to,
+			          type: 'node-red-' + node.type.replace(' ', '-'),
+			          payload: {
+			          	bucket: message.payload.bucket || null,
+			          	key: message.payload.key || null
+			          }
+			          
+		        	}
 
-		        	var msg = {
-				          id : payload.key, //Guid.newGuid(),
-				          from: node.from || '0000000.0000000',
-				          to: node.to,
-				          type: 'node-red-' + node.type.replace(' ', '-'),
-				          payload: {
-				          	bucket: message.payload.bucket || null,
-				          	key: message.payload.key || null
-				          }
-				          
-			        	}
+		        var message = {
+		        	default: JSON.stringify(msg)
+		        };
 
-			        var message = {
-			        	default: JSON.stringify(msg)
-			        };
+		        console.log('\nSending message:\n', JSON.stringify(message, null, 2)); // successful response
 
-			        console.log('\nSending message:\n', JSON.stringify(msg, null, 2)); // successful response
-
-					sns.publish({
-						Message: JSON.stringify(message),
-						MessageStructure: 'json',
-						TopicArn: 'arn:aws:sns:us-east-1:631712212114:' + node.type
-						}, function(err, data) {
-				            callback2(err, data);
-				    });  
-
-				}, function(err) {
-		          
-					if (err) {
-						next('Unable to dispatch all messages due to an error: ' + err);
-					} 
-
-					console.log('Successfully dispatch messages.');
-
-					next(null);
-				});
-
+				sns.publish({
+					Message: JSON.stringify(message),
+					MessageStructure: 'json',
+					TopicArn: topicArn + node.type.replace(' ', '-')
+					}, function(err, data) {
+						if (!err) {
+							console.log('\Successfully sent SNS message to node:\n', topicArn + node.type.replace(' ', '-'), JSON.stringify(message, null, 2)); // successful response
+						}
+			            next(err, data);
+			    });  
 
 	        }
 	    ], function(err) {

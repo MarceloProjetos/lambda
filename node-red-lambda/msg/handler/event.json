@@ -1,100 +1,40 @@
 {
     "Records": [
         {
-            "eventID": "b33c88918a9164c6721e57dcbef1bdac",
-            "eventName": "INSERT",
-            "eventVersion": "1.0",
-            "eventSource": "aws:dynamodb",
-            "awsRegion": "us-east-1",
-            "dynamodb": {
-                "Keys": {
-                    "id": {
-                        "S": "ed6ebce1-ff41-436f-8985-9b2e78eaf59f"
-                    }
-                },
-                "NewImage": {
-                    "payload": {
-                        "S": "----> LAMBDA TEST <----"
-                    },
-                    "from": {
-                        "S": "cba87466.4e8338"
-                    },
-                    "id": {
-                        "S": "ed6ebce1-ff41-436f-8985-9b2e78eaf59f"
-                    },
-                    "to": {
-                        "S": "b29c8d26.60efc"
-                    }
-                },
-                "SequenceNumber": "3591200000000004615255472",
-                "SizeBytes": 139,
-                "StreamViewType": "NEW_AND_OLD_IMAGES"
-            },
-            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/node-red-msg/stream/2016-05-19T19:57:38.716"
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:us-east-1:631712212114:node-red-flow-route:f17b175f-c25d-4b28-be6c-3645b767011b",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "f611442d-2fb5-551c-a0d9-0beb14457bc2",
+                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-flow-route",
+                "Subject": null,
+                "Message": "{\"id\":\"ug4hdc6a38nur6f5na6biaqp6b9rkd27b0oq7781\",\"from\":\"cba87466.4e833a\",\"to\":\"c7e34693.b2a468\",\"payload\":{\"bucket\":\"node-red-aws-ses-in\",\"key\":\"ug4hdc6a38nur6f5na6biaqp6b9rkd27b0oq7781\"}}",
+                "Timestamp": "2016-05-30T13:01:36.805Z",
+                "SignatureVersion": "1",
+                "Signature": "IfRkpxoecsn9LwNTtW5qodDXfq82L/wqVuiPMusoO4FxDnG93JG1H5/dauBb9i8Kl/MZ1F6+bH+25Yjj3aFxMNS8hr/XGdZKPaBmPlpITs3JTQaFWejAoCNWcOpL6OLYS6vk5urlk+nXoUVcv/s0q2FNyWzDKkalH7Ap7T0/4Ed36cRJcxfZ4NvKMH5I+TYNySNgBn3LVbvwBPB0tfYW8cmjUI9wb8ui8crV9sposf9HjvkS+VQ1o6Ml9IL8Al+8OWvCwRDX1m5CJYqqXusW+r/wuILXHfrUAib+rFqCZARrD8v0tCEJpW5lZ9GrXzN8XSyc2BPzH5PtAVEJurHmOw==",
+                "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-bb750dd426d95ee9390147a5624348ee.pem",
+                "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:631712212114:node-red-flow-route:f17b175f-c25d-4b28-be6c-3645b767011b",
+                "MessageAttributes": {}
+            }
         },
         {
-            "eventID": "29139b8eefbcfe76c6918cc28366801f",
-            "eventName": "INSERT",
-            "eventVersion": "1.0",
-            "eventSource": "aws:dynamodb",
-            "awsRegion": "us-east-1",
-            "dynamodb": {
-                "Keys": {
-                    "id": {
-                        "S": "76090b00-ca4b-4d5e-b548-4d4536ee1cca"
-                    }
-                },
-                "NewImage": {
-                    "payload": {
-                        "S": "----> LAMBDA TEST <----"
-                    },
-                    "from": {
-                        "S": "cba87466.4e8338"
-                    },
-                    "id": {
-                        "S": "76090b00-ca4b-4d5e-b548-4d4536ee1cca"
-                    },
-                    "to": {
-                        "S": "c7e34693.b2a468"
-                    }
-                },
-                "SequenceNumber": "3591300000000004615255515",
-                "SizeBytes": 140,
-                "StreamViewType": "NEW_AND_OLD_IMAGES"
-            },
-            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/node-red-msg/stream/2016-05-19T19:57:38.716"
-        },
-        {
-            "eventID": "defaa7b03e40544ec661e5f30a55d39d",
-            "eventName": "REMOVE",
-            "eventVersion": "1.0",
-            "eventSource": "aws:dynamodb",
-            "awsRegion": "us-east-1",
-            "dynamodb": {
-                "Keys": {
-                    "id": {
-                        "S": "d2520b19-ec99-455d-9840-520e194af197"
-                    }
-                },
-                "OldImage": {
-                    "payload": {
-                        "S": "***** TA QUASE ******"
-                    },
-                    "from": {
-                        "S": "cba87466.4e8338"
-                    },
-                    "id": {
-                        "S": "d2520b19-ec99-455d-9840-520e194af197"
-                    },
-                    "to": {
-                        "S": "b29c8d26.60efc"
-                    }
-                },
-                "SequenceNumber": "3986200000000005701890560",
-                "SizeBytes": 139,
-                "StreamViewType": "NEW_AND_OLD_IMAGES"
-            },
-            "eventSourceARN": "arn:aws:dynamodb:us-east-1:631712212114:table/node-red-msg/stream/2016-05-20T13:59:31.532"
-        }        
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:us-east-1:631712212114:node-red-flow-route:f17b175f-c25d-4b28-be6c-3645b767011b",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "1b2e29d6-a334-507d-88a3-661098c4261f",
+                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-flow-route",
+                "Subject": null,
+                "Message": "{\"id\":\"ug4hdc6a38nur6f5na6biaqp6b9rkd27b0oq7781\",\"from\":\"cba87466.4e833a\",\"to\":\"b29c8d26.60efc\",\"payload\":{\"bucket\":\"node-red-aws-ses-in\",\"key\":\"ug4hdc6a38nur6f5na6biaqp6b9rkd27b0oq7781\"}}",
+                "Timestamp": "2016-05-30T13:01:36.812Z",
+                "SignatureVersion": "1",
+                "Signature": "cYucmf5YewAbohzW1J5FjjQqySr47R5QZvNd1ylQLuhyS4+x0VvDtXj16fIODqi2lqTLtPM/q/qHT9nVLdKWkvTFuUMkHhLjSUTzICgaQJApkgn0lo5FGIv86GAsTlOO6+2+NUjGOBu8Jj6aUof7z3Xf1ElAd+1pvxOXUD3b8IfCeLFsMbsERrmq3X4t3FXcvv/S/N8MKEVihbXle634HDvyq39Qra3FLQFkn5BC52bboXlnLs/ZfZCHWitipyg8v0zsTzsV4pSKw9WbnxO6uKR9rjKs+GRGeUy399hoFw8/m0/oYa0iM4rUw649hHEwTsFdUz2Rlv2zSLUMpo5C+Q==",
+                "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-bb750dd426d95ee9390147a5624348ee.pem",
+                "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:631712212114:node-red-flow-route:f17b175f-c25d-4b28-be6c-3645b767011b",
+                "MessageAttributes": {}
+            }
+        }
     ]
 }

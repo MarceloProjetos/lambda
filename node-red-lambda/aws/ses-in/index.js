@@ -107,6 +107,9 @@ exports.handler = function(event, context) {
 						MessageStructure: 'json',
 						TopicArn: 'arn:aws:sns:us-east-1:631712212114:node-red-flow-route'
 						}, function(err, data) {
+							if (!err) {
+								console.log('\Successfully dispatch SNS message:\n', JSON.stringify(message, null, 2)); // successful response
+							}
 				            callback2(err, data);
 				    });  
 

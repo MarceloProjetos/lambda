@@ -9,7 +9,6 @@
   "author": "Alessandro Holanda",
   "license": "Apache-2.0",
   "dependencies": {
-    "async": "^1.5.2",
-    "aws-sdk": "^2.3.13"
+    "async": "^1.5.2"
   }
 }

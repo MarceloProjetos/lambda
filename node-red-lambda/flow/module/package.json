@@ -1,0 +1,18 @@
+{
+  "name": "node-red-aws-lambda-flow-module",
+  "version": "1.0.1",
+  "description": "node red flow route module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node-red"
+  ],
+  "author": "Alessandro Holanda",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "async": "^1.5.2",
+    "aws-sdk": "^2.3.16"
+  }
+}

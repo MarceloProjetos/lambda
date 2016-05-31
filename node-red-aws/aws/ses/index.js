@@ -5,9 +5,9 @@ var dynamodb = new AWS.DynamoDB.DocumentClient();
 var sns = new AWS.SNS();
 
 var async = require('async');
+var flow = require('node-red-aws-lambda-flow-module');
 
 var topicRoute = 'arn:aws:sns:us-east-1:631712212114:node-red-flow-route';
-var defaultRoute = 'arn:aws:sns:us-east-1:631712212114:node-red-aws-ses-in-default';
 
 exports.handler = function(event, context) {
     //console.log('Received event:', JSON.stringify(event, null, 2));
@@ -28,7 +28,7 @@ exports.handler = function(event, context) {
 	    	key: message.receipt.action.objectKey
 	    }
 
-	    console.log('Send to recipients:', recipients);
+	    //console.log('Send to recipients:', recipients);
 
 	    async.forEachOf(recipients, function(recipient, key, callback2) {
 
@@ -65,7 +65,7 @@ exports.handler = function(event, context) {
 
 		                    if (data.Items.length) {
 
-		                        console.log('\nNodes found:\n', JSON.stringify(data.Items, null, 2)); // successful response
+		                        //console.log('\nNodes found:\n', JSON.stringify(data.Items, null, 2)); // successful response
 
 		                        next(null, data.Items);
 		                    
@@ -144,9 +144,9 @@ exports.handler = function(event, context) {
 		});
 
 	}, function(err) {
-	  /*if (err) {
-	    context.fail('Error: ' + err);
-	  }*/
+	  if (err) {
+	    context.fail(err);
+	  }
 	  context.done(err);          
 
 	});

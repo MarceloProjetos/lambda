@@ -1,0 +1,22 @@
+{
+    "Records": [
+        {
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:us-east-1:631712212114:node-red-flow-route:f17b175f-c25d-4b28-be6c-3645b767011b",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "f611442d-2fb5-551c-a0d9-0beb14457bc2",
+                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-flow-route",
+                "Subject": null,
+                "Message": "{\"from\":\"a29da41f.196c08\",\"to\":\"af421080.0d8f\",\"payload\":{\"bucket\":\"node-red-aws-ses-in\",\"key\":\"ug4hdc6a38nur6f5na6biaqp6b9rkd27b0oqAAAA\"}}",
+                "Timestamp": "2016-05-30T13:01:36.805Z",
+                "SignatureVersion": "1",
+                "Signature": "IfRkpxoecsn9LwNTtW5qodDXfq82L/wqVuiPMusoO4FxDnG93JG1H5/dauBb9i8Kl/MZ1F6+bH+25Yjj3aFxMNS8hr/XGdZKPaBmPlpITs3JTQaFWejAoCNWcOpL6OLYS6vk5urlk+nXoUVcv/s0q2FNyWzDKkalH7Ap7T0/4Ed36cRJcxfZ4NvKMH5I+TYNySNgBn3LVbvwBPB0tfYW8cmjUI9wb8ui8crV9sposf9HjvkS+VQ1o6Ml9IL8Al+8OWvCwRDX1m5CJYqqXusW+r/wuILXHfrUAib+rFqCZARrD8v0tCEJpW5lZ9GrXzN8XSyc2BPzH5PtAVEJurHmOw==",
+                "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-bb750dd426d95ee9390147a5624348ee.pem",
+                "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:631712212114:node-red-flow-route:f17b175f-c25d-4b28-be6c-3645b767011b",
+                "MessageAttributes": {}
+            }
+        }
+    ]
+}

@@ -1,0 +1,555 @@
+{
+   "id": "Definitions_1",
+   "targetNamespace": "http://bpmn.io/schema/bpmn",
+   "exporter": "Camunda Modeler",
+   "exporterVersion": "1.0.0",
+   "collaboration": {
+      "id": "Collaboration_1xe9he1",
+      "participant": {
+         "id": "Participant_0xbcv2y",
+         "name": "participant",
+         "processRef": "Process_1i3nnv9"
+      }
+   },
+   "process": {
+      "id": "Process_1i3nnv9",
+      "name": "Processo teste",
+      "isExecutable": "false",
+      "endEvent": [
+         {
+            "id": "EndEvent_1cn1njo",
+            "incoming": "SequenceFlow_0akw3it"
+         },
+         {
+            "id": "EndEvent_08x19p9",
+            "name": "fim 1",
+            "incoming": "SequenceFlow_1uly3cb"
+         }
+      ],
+      "task": [
+         {
+            "id": "Task_0l7bc3u",
+            "name": "tarefa 3",
+            "extensionElements": {
+               "properties": {
+                  "property": {
+                     "name": "flow",
+                     "value": "Flow 3"
+                  }
+               }
+            },
+            "incoming": "SequenceFlow_0t69wr1",
+            "outgoing": "SequenceFlow_0ykl6id"
+         },
+         {
+            "id": "Task_0ler6mn",
+            "name": "tarefa 4",
+            "extensionElements": {
+               "properties": {
+                  "property": {
+                     "name": "flow",
+                     "value": "Flow 4"
+                  }
+               }
+            },
+            "incoming": "SequenceFlow_0k5zhxk",
+            "outgoing": "SequenceFlow_0ufhqbp"
+         }
+      ],
+      "businessRuleTask": {
+         "id": "BusinessRuleTask_08ia48i",
+         "name": "tarefa 2",
+         "extensionElements": {
+            "properties": {
+               "property": {
+                  "name": "flow",
+                  "value": "Flow 2"
+               }
+            }
+         },
+         "incoming": "SequenceFlow_170qqc7",
+         "outgoing": "SequenceFlow_1hcipmh"
+      },
+      "userTask": {
+         "id": "UserTask_0e8h47y",
+         "name": "tarefa 1",
+         "extensionElements": {
+            "properties": {
+               "property": {
+                  "name": "flow",
+                  "value": "Flow 1"
+               }
+            }
+         },
+         "incoming": "SequenceFlow_1b75vo3",
+         "outgoing": [
+            "SequenceFlow_170qqc7",
+            "SequenceFlow_1uly3cb"
+         ]
+      },
+      "startEvent": {
+         "id": "StartEvent_0fituz6",
+         "name": "inicio",
+         "outgoing": "SequenceFlow_1b75vo3"
+      },
+      "sequenceFlow": [
+         {
+            "id": "SequenceFlow_0akw3it",
+            "sourceRef": "ExclusiveGateway_0ss86y2",
+            "targetRef": "EndEvent_1cn1njo"
+         },
+         {
+            "id": "SequenceFlow_0ykl6id",
+            "sourceRef": "Task_0l7bc3u",
+            "targetRef": "ExclusiveGateway_0ss86y2"
+         },
+         {
+            "id": "SequenceFlow_0ufhqbp",
+            "sourceRef": "Task_0ler6mn",
+            "targetRef": "ExclusiveGateway_0ss86y2"
+         },
+         {
+            "id": "SequenceFlow_1hcipmh",
+            "sourceRef": "BusinessRuleTask_08ia48i",
+            "targetRef": "ParallelGateway_1sosz1j"
+         },
+         {
+            "id": "SequenceFlow_0k5zhxk",
+            "sourceRef": "ParallelGateway_1sosz1j",
+            "targetRef": "Task_0ler6mn"
+         },
+         {
+            "id": "SequenceFlow_0t69wr1",
+            "sourceRef": "ParallelGateway_1sosz1j",
+            "targetRef": "Task_0l7bc3u"
+         },
+         {
+            "id": "SequenceFlow_170qqc7",
+            "name": "abaixo",
+            "sourceRef": "UserTask_0e8h47y",
+            "targetRef": "BusinessRuleTask_08ia48i"
+         },
+         {
+            "id": "SequenceFlow_1b75vo3",
+            "name": "esquerda",
+            "sourceRef": "StartEvent_0fituz6",
+            "targetRef": "UserTask_0e8h47y"
+         },
+         {
+            "id": "SequenceFlow_1uly3cb",
+            "name": "direita",
+            "sourceRef": "UserTask_0e8h47y",
+            "targetRef": "EndEvent_08x19p9"
+         }
+      ],
+      "parallelGateway": {
+         "id": "ParallelGateway_1sosz1j",
+         "incoming": "SequenceFlow_1hcipmh",
+         "outgoing": [
+            "SequenceFlow_0k5zhxk",
+            "SequenceFlow_0t69wr1"
+         ]
+      },
+      "exclusiveGateway": {
+         "id": "ExclusiveGateway_0ss86y2",
+         "incoming": [
+            "SequenceFlow_0ykl6id",
+            "SequenceFlow_0ufhqbp"
+         ],
+         "outgoing": "SequenceFlow_0akw3it"
+      }
+   },
+   "BPMNDiagram": {
+      "id": "BPMNDiagram_1",
+      "BPMNPlane": {
+         "id": "BPMNPlane_1",
+         "bpmnElement": "Collaboration_1xe9he1",
+         "BPMNShape": [
+            {
+               "id": "Participant_0xbcv2y_di",
+               "bpmnElement": "Participant_0xbcv2y",
+               "Bounds": {
+                  "x": "-552",
+                  "y": "-370",
+                  "width": "1191",
+                  "height": "703"
+               }
+            },
+            {
+               "id": "EndEvent_1cn1njo_di",
+               "bpmnElement": "EndEvent_1cn1njo",
+               "Bounds": {
+                  "x": "503",
+                  "y": "140",
+                  "width": "36",
+                  "height": "36"
+               },
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "476",
+                     "y": "176",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "Task_0l7bc3u_di",
+               "bpmnElement": "Task_0l7bc3u",
+               "Bounds": {
+                  "x": "90",
+                  "y": "27",
+                  "width": "100",
+                  "height": "80"
+               }
+            },
+            {
+               "id": "Task_0ler6mn_di",
+               "bpmnElement": "Task_0ler6mn",
+               "Bounds": {
+                  "x": "90",
+                  "y": "193",
+                  "width": "100",
+                  "height": "80"
+               }
+            },
+            {
+               "id": "BusinessRuleTask_08ia48i_di",
+               "bpmnElement": "BusinessRuleTask_08ia48i",
+               "Bounds": {
+                  "x": "-310",
+                  "y": "-135",
+                  "width": "100",
+                  "height": "80"
+               }
+            },
+            {
+               "id": "UserTask_0e8h47y_di",
+               "bpmnElement": "UserTask_0e8h47y",
+               "Bounds": {
+                  "x": "-310",
+                  "y": "-310",
+                  "width": "100",
+                  "height": "80"
+               }
+            },
+            {
+               "id": "EndEvent_08x19p9_di",
+               "bpmnElement": "EndEvent_08x19p9",
+               "Bounds": {
+                  "x": "-98",
+                  "y": "-288",
+                  "width": "36",
+                  "height": "36"
+               },
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-125",
+                     "y": "-252",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "StartEvent_0fituz6_di",
+               "bpmnElement": "StartEvent_0fituz6",
+               "Bounds": {
+                  "x": "-452",
+                  "y": "-288",
+                  "width": "36",
+                  "height": "36"
+               },
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-479",
+                     "y": "-252",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "ParallelGateway_1sosz1j_di",
+               "bpmnElement": "ParallelGateway_1sosz1j",
+               "Bounds": {
+                  "x": "-91",
+                  "y": "133",
+                  "width": "50",
+                  "height": "50"
+               },
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-111",
+                     "y": "183",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "ExclusiveGateway_0ss86y2_di",
+               "bpmnElement": "ExclusiveGateway_0ss86y2",
+               "isMarkerVisible": "true",
+               "Bounds": {
+                  "x": "314",
+                  "y": "133",
+                  "width": "50",
+                  "height": "50"
+               },
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "294",
+                     "y": "183",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            }
+         ],
+         "BPMNEdge": [
+            {
+               "id": "SequenceFlow_0akw3it_di",
+               "bpmnElement": "SequenceFlow_0akw3it",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "364",
+                     "y": "158"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "503",
+                     "y": "158"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "397.5",
+                     "y": "42",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "SequenceFlow_0ykl6id_di",
+               "bpmnElement": "SequenceFlow_0ykl6id",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "190",
+                     "y": "67"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "339",
+                     "y": "67"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "339",
+                     "y": "133"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "219.5",
+                     "y": "42",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "SequenceFlow_0ufhqbp_di",
+               "bpmnElement": "SequenceFlow_0ufhqbp",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "190",
+                     "y": "233"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "339",
+                     "y": "233"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "339",
+                     "y": "183"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "237.5",
+                     "y": "143",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "SequenceFlow_1hcipmh_di",
+               "bpmnElement": "SequenceFlow_1hcipmh",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "-260",
+                     "y": "-55"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "-260",
+                     "y": "158"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "-91",
+                     "y": "158"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-290",
+                     "y": "-3.5",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "SequenceFlow_0k5zhxk_di",
+               "bpmnElement": "SequenceFlow_0k5zhxk",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "-66",
+                     "y": "183"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "-66",
+                     "y": "233"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "90",
+                     "y": "233"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-96",
+                     "y": "120",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "SequenceFlow_0t69wr1_di",
+               "bpmnElement": "SequenceFlow_0t69wr1",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "-66",
+                     "y": "133"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "-66",
+                     "y": "67"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "90",
+                     "y": "67"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-96",
+                     "y": "90",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "SequenceFlow_170qqc7_di",
+               "bpmnElement": "SequenceFlow_170qqc7",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "-260",
+                     "y": "-230"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "-260",
+                     "y": "-135"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-275",
+                     "y": "-191.5",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "SequenceFlow_1b75vo3_di",
+               "bpmnElement": "SequenceFlow_1b75vo3",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "-416",
+                     "y": "-270"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "-310",
+                     "y": "-270"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-410",
+                     "y": "-294",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            },
+            {
+               "id": "SequenceFlow_1uly3cb_di",
+               "bpmnElement": "SequenceFlow_1uly3cb",
+               "waypoint": [
+                  {
+                     "type": "dc:Point",
+                     "x": "-210",
+                     "y": "-270"
+                  },
+                  {
+                     "type": "dc:Point",
+                     "x": "-98",
+                     "y": "-270"
+                  }
+               ],
+               "BPMNLabel": {
+                  "Bounds": {
+                     "x": "-199",
+                     "y": "-295",
+                     "width": "90",
+                     "height": "20"
+                  }
+               }
+            }
+         ]
+      }
+   }
+}

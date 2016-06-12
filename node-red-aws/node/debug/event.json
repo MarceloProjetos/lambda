@@ -7,9 +7,9 @@
             "Sns": {
                 "Type": "Notification",
                 "MessageId": "f611442d-2fb5-551c-a0d9-0beb14457bc2",
-                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-flow-route",
+                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-ses-in",
                 "Subject": null,
-                "Message": "{\"from\":\"eef058f2.467938\",\"to\":\"66412d5c.858ac4\",\"payload\": \"Teste de roteamento\"}",
+                "Message": "{\"from\":\"eef058f2.467938\",\"to\":\"66412d5c.858ac4\",\"payload\": \"Outra mensagem, testando...\" }",
                 "Timestamp": "2016-05-30T13:01:36.805Z",
                 "SignatureVersion": "1",
                 "Signature": "IfRkpxoecsn9LwNTtW5qodDXfq82L/wqVuiPMusoO4FxDnG93JG1H5/dauBb9i8Kl/MZ1F6+bH+25Yjj3aFxMNS8hr/XGdZKPaBmPlpITs3JTQaFWejAoCNWcOpL6OLYS6vk5urlk+nXoUVcv/s0q2FNyWzDKkalH7Ap7T0/4Ed36cRJcxfZ4NvKMH5I+TYNySNgBn3LVbvwBPB0tfYW8cmjUI9wb8ui8crV9sposf9HjvkS+VQ1o6Ml9IL8Al+8OWvCwRDX1m5CJYqqXusW+r/wuILXHfrUAib+rFqCZARrD8v0tCEJpW5lZ9GrXzN8XSyc2BPzH5PtAVEJurHmOw==",

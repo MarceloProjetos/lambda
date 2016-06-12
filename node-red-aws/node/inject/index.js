@@ -9,103 +9,98 @@ var async = require('async');
 
 var topicArn = 'arn:aws:sns:us-east-1:631712212114:node-red-flow-route';
 
-exports.handler = (event, context, callback) => {
-    console.log('Received event:', JSON.stringify(event, null, 2));
+exports.handler = function(event, context, callback) {
+  console.log('Received event:', JSON.stringify(event, null, 2));
 
-    async.waterfall([
-        function lookup_node(next) {
+  async.waterfall([
+      function lookup_node(next) {
 
-          var params = {
-              TableName : 'node-red-flow',
-              Key : { 
-                "id" : event.params.path.id
-              }
-          };
-          
-          dynamodb.get(params, function(err, data) {
+        var params = {
+            TableName : 'node-red-flow',
+            Key : { 
+              "id" : event.params.path.id
+            }
+        };
+        
+        dynamodb.get(params, function(err, data) {
 
-              if (err) {
+            if (err) {
 
-                console.log(err); // an error occurred
-                context.fail(err);
+              console.log(err); // an error occurred
+              context.fail(err);
 
-              } else {
+            } else {
 
-                  if (data.Item === undefined) {
+                if (data.Item === undefined) {
 
-                      console.error('Node not found.');
-                      next('Node not found.');
+                    console.error('Node not found.');
+                    next('Node not found.');
 
-                  } else {
+                } else {
 
-                      console.log('Node found:', JSON.stringify(data.Item, null, 2)); // successful response
-                            
-                      next(err, data.Item);
+                    console.log('Node found:', JSON.stringify(data.Item, null, 2)); // successful response
+                    next(err, data.Item);
 
-                  }
-                
-              }
+                }
+              
+            }
 
-          });
-        },
-        function dispatch(node, next) {
-            var to_list = [];
+        });
+      },
+      function dispatch(node, next) {
+          var to_list = [];
 
-            node.wires.forEach(function(outputs) {
-              outputs.forEach(function(node) {
-                to_list.push(node)
-              })
+          node.wires.forEach(function(outputs) {
+            outputs.forEach(function(node) {
+              to_list.push(node)
             })
+          })
 
-            console.log('Injecting message to this nodes:', to_list);
-            
-            async.forEachOf(to_list, function(to, key, callback) {
+          console.log('Injecting message to this nodes:', to_list);
+          
+          async.forEachOf(to_list, function(to, key, callback) {
 
-              var msg = {
-                  from: node.id || '0000000.0000000',
-                  to: to,
-                  payload: {
-                    bucket: node.payload.bucket || null,
-                    key: node.payload.key || null
-                  }
-                  
-                }
+            var msg = {
+                from: node.id || '0000000.0000000',
+                to: to,
+                payload: node.payload || ''                
+            }
 
-              var message = {
-                default: JSON.stringify(msg)
-              };
+            var message = {
+              default: JSON.stringify(msg)
+            };
 
-              console.log('\nSending message:\n', JSON.stringify(msg, null, 2)); // successful response
+            console.log('\nSending message:\n', JSON.stringify(msg, null, 2)); // successful response
 
-              sns.publish({
-                Message: JSON.stringify(message),
-                MessageStructure: 'json',
-                TopicArn: topicArn
-              }, function(err, data) {
-                if (!err) {
-                  console.log('\Successfully dispatch SNS message:\n', JSON.stringify(message, null, 2)); // successful response
-                }
-                callback(err, data);
-              });       
-                
-            }, function(err) {
-                
-                if (err) {
-                    next('Unable to dispatch all messages due to an error: ' + err);
-                } 
+            sns.publish({
+              Message: JSON.stringify(message),
+              MessageStructure: 'json',
+              TopicArn: topicArn
+            }, function(err, data) {
+              if (!err) {
+                console.log('\Successfully dispatch SNS message:\n', JSON.stringify(message, null, 2)); // successful response
+              }
+              callback(err, data);
+            });       
+              
+          }, function(err) {
+              
+              if (err) {
+                  next('Unable to dispatch all messages due to an error: ' + err);
+              } 
 
-                console.log('Successfully dispatch messages.');
+              console.log('Successfully dispatch messages.');
 
-                next(null);
-            });
+              next(null);
+          });
 
-        }
-    ], function(err) {
-        if (err) {
-          context.fail('Error: ' + err);
-        }
-        context.done(null, { msg: 'Message dispatch successfully'});
-    });
+      }
+  ], function(err) {
+      if (err) {
+        context.fail('Error: ' + err);
+      }
+      context.done(null, { msg: 'Message dispatch successfully'});
+  });
     
 };
 

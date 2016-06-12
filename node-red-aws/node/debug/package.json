@@ -1,0 +1,20 @@
+{
+  "name": "node-red-aws-lambda-node-inject",
+  "version": "1.0.0",
+  "description": "node-red servless node inject",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node-red",
+    "lambda"
+  ],
+  "author": "Alessandro Holanda",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "async": "^1.5.2",
+    "aws-iot-device-sdk": "^1.0.12",
+    "aws-sdk": "^2.3.13"
+  }
+}

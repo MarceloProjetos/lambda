@@ -53,7 +53,7 @@ exports.handler = function(event, context) {
             var device = awsIot.device({
               "host": "A2P1UO6NYTQZKP.iot.us-east-1.amazonaws.com",
               "port": 8883,
-              "clientId": "node-red-debug",
+              "clientId": "node-red-debug-" + (Math.floor((Math.random() * 100000) + 1)),
               "thingName": "node-red-debug",
               "caCert": "root-CA.crt",
               "clientCert": "0463c63f04-certificate.pem.crt",
@@ -75,8 +75,9 @@ exports.handler = function(event, context) {
             device
               .on('connect', function() {
                 console.log('connect');
-                device.subscribe('debug');
+                //device.subscribe('debug');
                 device.publish('debug', JSON.stringify(msg.payload || ''), function(err) {
+                  device.end();
                   next(err);
                 });
               });

@@ -12,7 +12,7 @@ exports.handler = function(event, context, callback) {
 	
 	var nodes = msg.parse(event);
 
-	async.each(nodes, function(node, asyncCallback1) {
+	async.each(nodes, function(node, asyncCallback) {
 
 		var params = {
 		};
@@ -21,7 +21,7 @@ exports.handler = function(event, context, callback) {
 		ses.describeActiveReceiptRuleSet(params, function(err, activeReceiptRuleSet) {
 			if (err) {
 
-				msg.error(err, asyncCallback1);
+				msg.error(err, asyncCallback);
 
 			} else {     
 				console.log('ActiveReceiptRuleSet: ' + JSON.stringify(activeReceiptRuleSet, null, 2)); // successful response
@@ -68,7 +68,7 @@ exports.handler = function(event, context, callback) {
 					}, function(err) {
 						if (err) {
 
-							msg.error('Error on create SNS topics: ' + err, asyncCallback1);
+							msg.error('Error on create SNS topics: ' + err, asyncCallback);
 
 						} else {
 							console.log('Create SNS topics done.');
@@ -103,7 +103,7 @@ exports.handler = function(event, context, callback) {
 
 								} else {
 									console.log('Create SES Receipt Rule successfull.');
-									asyncCallback1(err, data);	
+									asyncCallback(err, data);	
 								}
 							  	
 							});	

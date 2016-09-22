@@ -11,7 +11,7 @@ exports.handler = function(event, context, callback) {
 	
 	var nodes = msg.parse(event);
 
-	async.each(nodes, function(node, asyncCallback1) {
+	async.each(nodes, function(node, asyncCallback) {
 
 		var params = {
 		};
@@ -20,7 +20,7 @@ exports.handler = function(event, context, callback) {
 		ses.describeActiveReceiptRuleSet(params, function(err, activeReceiptRuleSet) {
 			if (err) {
 
-				msg.error('Error on describeActiveReceiptRuleSet: ' + err, asyncCallback1);
+				msg.error('Error on describeActiveReceiptRuleSet: ' + err, asyncCallback);
 
 			} else {     
 				console.log('ActiveReceiptRuleSet: ' + JSON.stringify(activeReceiptRuleSet, null, 2)); // successful response
@@ -42,17 +42,17 @@ exports.handler = function(event, context, callback) {
 
 						if (err) {
 
-							node.error('Error on deleteReceiptRule: ' + err, asyncCallback1);
+							node.error('Error on deleteReceiptRule: ' + err, asyncCallback);
 
 						} else {
-							asyncCallback1(err, data);	
+							asyncCallback(err, data);	
 						}
 					  	
 					});	
 
 				} else {
 					console.log('Rule not found ' + node.id.replace('.', '-') + ', nothing to delete.');
-					asyncCallback1(err, activeReceiptRuleSet);
+					asyncCallback(err, activeReceiptRuleSet);
 				}
 				
 			}

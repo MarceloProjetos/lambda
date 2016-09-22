@@ -1,0 +1,22 @@
+{
+    "Records": [
+        {
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-inserted:6cdbf4ac-d916-461b-8648-dffae19e5662",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "733eaf5d-8d02-510c-a61c-ff00c94e8ac2",
+                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-inserted",
+                "Subject": null,
+                "Message": "{\"wires\":[[\"2f618d63.fd9832\",\"10b83dcf.6101d2\",\"8d289a30.640448\"]],\"recipient\":\"nfe@altamira.com.br\",\"x\":160,\"y\":140,\"z\":\"e41e71fb.a3532\",\"id\":\"172075a9.cb04aa\",\"type\":\"aws-ses-in\"}",
+                "Timestamp": "2016-09-22T02:29:32.279Z",
+                "SignatureVersion": "1",
+                "Signature": "dr1EeiLPoL0hCFqgGcj5BIeiBMAq65inxwY6OEPQEgr+0Byew2LZT9c2EsvVLurOl3kuToKoVPxLe1f/R1p+DSRQacKTDeF2AwYmwshDiAOC9B6PlqHRh2aHKAi/R6qtXWg9fUWWXV6j449Y121TD+l90N5VBvnDkkCrNjcCQ9tetZCt6N+GesMrfJoMnACvSqRpjMVnx7ccG0EgkKyn3rWNx18HyiPoCVjX58yDyQpSXgHbrtgCgpYSYBQxQ8xmSDDePEndUSjICGcPL1Yr4LEMQ7bYO9SPXRRAgFZNCMP+l9DkRRPltYIIbCHg8yv5QzyXCAJbEqMc9hi5COWq5Q==",
+                "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+                "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-inserted:6cdbf4ac-d916-461b-8648-dffae19e5662",
+                "MessageAttributes": {}
+            }
+        }
+    ]
+}

@@ -3,11 +3,11 @@
         {
             "EventSource": "aws:sns",
             "EventVersion": "1.0",
-            "EventSubscriptionArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-inserted:24cf223c-5933-4dc3-a8bd-88dc9beb4b2a",
+            "EventSubscriptionArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-deleted:24cf223c-5933-4dc3-a8bd-88dc9beb4b2a",
             "Sns": {
                 "Type": "Notification",
                 "MessageId": "2150a167-08b7-53cd-bc0c-f13ac5d2ce7c",
-                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-inserted",
+                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-deleted",
                 "Subject": null,
                 "Message": "{\"wires\":[[\"bdc6bb95.ea3ac8\",\"471939.49ac26c8\",\"ba37cf0d.7c3f\"]],\"recipient\":\"nfe@alerman.com.br\",\"x\":180,\"y\":140,\"z\":\"e41e71fb.a3532\",\"id\":\"a05c5b2d.33cdd8\",\"type\":\"aws-ses-in\"}",
                 "Timestamp": "2016-09-22T12:14:29.785Z",

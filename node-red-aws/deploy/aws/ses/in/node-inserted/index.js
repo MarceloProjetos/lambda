@@ -2,103 +2,131 @@
 
 var aws = require('aws-sdk');
 var async = require('async');
+var msg = require('node-red-aws-msg');
+
 var ses = new aws.SES();
-var node = require('node-red-aws-node');
-var message = require('node-red-aws-msg');
 var sns = new aws.SNS();
 
 exports.handler = function(event, context, callback) {
-	console.log('Message: ' + JSON.stringify(event, null, 2));
+	console.log('Event: ' + JSON.stringify(event, null, 2));
 	
-	var msg = message.parse(event)[0];
+	var nodes = msg.parse(event);
 
-	var params = {
-	};
+	async.each(nodes, function(node, asyncCallback1) {
 
-	// work only in active rule set
-	ses.describeActiveReceiptRuleSet(params, function(err, data) {
-		if (err) {
+		var params = {
+		};
 
-			node.error(err, callback);
+		// work only in active rule set
+		ses.describeActiveReceiptRuleSet(params, function(err, activeReceiptRuleSet) {
+			if (err) {
 
-		} else {     
-			console.log(JSON.stringify(data, null, 2)); // successful response
+				msg.error(err, asyncCallback1);
 
-			var rule = data.Rules.find(function(e, i, a) { return e.Name === msg.id; });
+			} else {     
+				console.log('ActiveReceiptRuleSet: ' + JSON.stringify(activeReceiptRuleSet, null, 2)); // successful response
 
-			if (!rule) {
-				console.log('Rule not found, create one.');
-				//node.send('node-red-aws-deploy-aws-ses-in-create-receipt-rule-set', msg, callback);
+				var rule = activeReceiptRuleSet.Rules.find(function(rule, index, array) { return rule.Name === node.id.replace('.', '-'); });
 
-				var actions = [];
+				if (!rule) {
+					console.log('Rule not found ' + node.id.replace('.', '-') + ', create one.');
+					//node.send('node-red-aws-deploy-aws-ses-in-create-receipt-rule-set', msg, callback);
 
-				msg.wires.forEach(function(e, k, a) {
-					e.forEach(function(v, k, a) {
-						actions.push({ 
-							SNSAction: {
-				        		TopicArn: 'arn:aws:sns:us-east-1:631712212114:node-red-aws-node-' + v.replace('.', '-'), /* required */
-				        		Encoding: 'UTF-8'
-				        	}
-				        });
-					})					
-				})
+					var actions = [];
 
-				async.each(actions, function(topic, callback2) {
-					
-					var params = {
-					  	Name: topic.SNSAction.TopicArn.split(':')[5]
-					};
+					node.wires.forEach(function(e, k, a) {
+						e.forEach(function(v, k, a) {
+							actions.push({ 
+								SNSAction: {
+					        		TopicArn: 'arn:aws:sns:us-east-1:631712212114:node-red-aws-node-' + v.replace('.', '-'), /* required */
+					        		Encoding: 'UTF-8'
+					        	}
+					        });
+						})					
+					})
 
-					console.log('Creating SNS topic: ' + params.Name);
-
-					sns.createTopic(params, function(err, data) {
-						if (err) 
-							console.log('Create SNS topic error: ' + err);
-						else
-							console.log('Create SNS topic successfull.');
-						callback2(err, data);           // successful response
-					});
-
-				}, function(err) {
-					if (err) {
-						console.log('Error on create SNS topics');
-					} else {
-						console.log('Create SNS topics done.');
-
-						actions.splice(0, 0,
-							{ 
-								S3Action: {
-						        	BucketName: 'node-red-aws-ses-in'
-						        }
-						    });
-
+					async.each(actions, function(topic, asyncCallback2) {
+						
 						var params = {
-						  Rule: { /* required */
-						    Name: msg.id.replace('.', '-'), /* required */
-						    Actions: actions,
-						    Enabled: true,
-						    Recipients: [
-						      msg.recipient
-						    ],
-						    ScanEnabled: false
-						  },
-						  RuleSetName: data.Metadata.Name, /* required */
+						  	Name: topic.SNSAction.TopicArn.split(':')[5]
 						};
 
-						console.log(JSON.stringify(params, null, 2));
+						console.log('Creating SNS topic: ' + params.Name);
 
-						ses.createReceiptRule(params, function(err, data) {
-						  	callback(err, data);
-						});	
+						sns.createTopic(params, function(err, data) {
+							if (err) {
 
-					}
-				})
+								msg.error('Create SNS topic error: ' + err, asyncCallback2);
 
-			} else {
-				console.log('Rule found, check if receipt is the same.');
+							} else {
+								console.log('Create SNS topic successfull.');
+								asyncCallback2(err, data);
+							}
+
+						});
+
+					}, function(err) {
+						if (err) {
+
+							msg.error('Error on create SNS topics: ' + err, asyncCallback1);
+
+						} else {
+							console.log('Create SNS topics done.');
+
+							actions.splice(0, 0,
+								{ 
+									S3Action: {
+							        	BucketName: 'node-red-aws-ses-in'
+							        }
+							    });
+
+							var params = {
+							  Rule: { /* required */
+							    Name: node.id.replace('.', '-'), /* required */
+							    Actions: actions,
+							    Enabled: true,
+							    Recipients: [
+							      node.recipient
+							    ],
+							    ScanEnabled: false
+							  },
+							  RuleSetName: activeReceiptRuleSet.Metadata.Name, /* required */
+							};
+
+							console.log('createReceiptRule: ' + JSON.stringify(params, null, 2));
+
+							ses.createReceiptRule(params, function(err, data) {
+
+								if (err) {
+
+									msg.error('Error on create Receipt Rule: ' + err, ayncCallback1);
+
+								} else {
+									console.log('Create SES Receipt Rule successfull.');
+									asyncCallback1(err, data);	
+								}
+							  	
+							});	
+
+						}
+					})
+
+				} else {
+					console.log('Rule found ' + node.id.replace('.', '-') + ', check if receipt is the same.');
+				}
+				
 			}
 			
+		});
+
+	}, function(err) {
+
+		if (err) {
+			msg.error(err, callback);
+		} else {
+			callback(err, 'Done.');	
 		}
-		
-	});
+
+	})
+
 }

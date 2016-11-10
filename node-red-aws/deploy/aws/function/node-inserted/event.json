@@ -1,0 +1,22 @@
+{
+    "Records": [
+        {
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-inserted:24cf223c-5933-4dc3-a8bd-88dc9beb4b2a",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "2150a167-08b7-53cd-bc0c-f13ac5d2ce7c",
+                "TopicArn": "arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-inserted",
+                "Subject": null,
+                "Message": "{\"outputs\":1,\"wires\":[[]],\"func\":\"\\nreturn msg;\",\"noerr\":0,\"name\":null,\"x\":570,\"y\":220,\"z\":\"e41e71fb.a3532\",\"id\":\"1be1b45a.f82a8c\",\"type\":\"function\"}",
+                "Timestamp": "2016-09-22T12:14:29.785Z",
+                "SignatureVersion": "1",
+                "Signature": "H/IZIqmB+MYeIW+bQTsYqbpX7StgeqEnBdN2wuw9JbUcI2YOg/Y/UidnEgawQWyMSNDGOa2w6y/FvwQ/Sjl8c/3lcJnA6Of2BZFPSepECHj9QZjk5J27UURbnNP2I5FQ2VfTpLxmtNDoFy77GHQRWyuv93cPa4e5apLAkwngVKgQ5dwor3mCuw3Begp571Nv3soDvX/Al1HAZM178iNxBAxEp2RJnIn8taaK5ARWwIgd16Z+IQVJDwgfAapNREjFRGCGlKmH/pWn5+tQEZpClBxeaLqUuJN5rydyGr/fr4XYTwu8o+jkJtTtuiiP/Odw/9abZVJQJKbImVbz4AMOFg==",
+                "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-b95095beb82e8f6a046b3aafc7f4149a.pem",
+                "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:631712212114:node-red-aws-deploy-aws-ses-in-node-deleted:24cf223c-5933-4dc3-a8bd-88dc9beb4b2a",
+                "MessageAttributes": {}
+            }
+        }
+    ]
+}
